@@ -28,7 +28,8 @@
 
 3.  **Model Results (7.6 GB Total):** 
     *   Open the [ImageNet trained models](https://drive.google.com/drive/folders/1gPwVSE0qctWVeaGwCv3eGQdQR4IK6Xds?usp=sharing) and [CIFAR100 trained models](https://drive.google.com/drive/folders/16pEAbdH4aRpw-3s2vm4TbMey1GPQn2FQ?usp=sharing) links.
-    *   **How to copy:** Select all items inside the link, right-click, and choose **"Make a copy"**. Move these copies from your root "My Drive" into their respective folders as shown below.
+    **Note on Access:** You have **Viewer** access. To use these files, you must **Select all items** inside the link, right-click, and choose **"Make a copy"**.
+    *   Google will create copies in your root "My Drive". **Move them** into their respective folders: `/results/` and `/results_cifar100/`. Each model folder must contain `best_model.pth` and `training_history.json`.
 
 
 ---
@@ -39,6 +40,7 @@
 *   **Mount & Setup:** Run the **first cell (Cell 1)**. 
     *   When the popup appears, click **"Connect to Google Drive"** to grant access.
     *   **Note:** This cell will automatically mount your Drive and **copy all necessary scripts from your Drive into the Colab local environment (SSD)**.
+
 
 ---
 
