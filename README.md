@@ -38,7 +38,7 @@
 *   **Runtime:** Go to **Runtime > Change runtime type** and select **GPU (H100 or A100)**.
 *   **Mount & Setup:** Run the **first cell (Cell 1)**. 
     *   When the popup appears, click **"Connect to Google Drive"** to grant access.
-    *   **Note:** This cell will automatically mount your Drive and **copy all necessary scripts from your Drive into the Colab local environment (SSD)** for faster execution.
+    *   **Note:** This cell will automatically mount your Drive and **copy all necessary scripts from your Drive into the Colab local environment (SSD)**.
 
 ---
 
