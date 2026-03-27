@@ -32,7 +32,7 @@
     **Note on Access:** You have **Viewer** access. To use these files, you must **Select all items** inside the link, right-click, and choose **"Make a copy"**.
     *   Google will create copies in your root "My Drive". **Move them** into their respective folders: `/results/` and `/results_cifar100/`. Each model folder must contain `best_model.pth` and `training_history.json`.
     *   ⚠️ Important: Ensure all folders and files are named exactly as shown (remove any "Copy of" prefixes added by Google Drive).
-    *   ⚠️ Note: The folder /pe_experiment/results/ must also contain the two shared analysis files: adversarial_pe_results.json and analysis_data.json (see the diagram in Section B for the exact layout).
+    *   ⚠️ Note: The folder /pe_experiment/results/ must also contain the two shared analysis files: adversarial_pe_results.json and analysis_data.json (see the diagram in Section B).
     *   ⚠️ Note: The folder /pe_experiment/results_cifar100/ must also contain the shared file: adversarial_pe_results_cifar100.json (see the diagram in Section B).
 
 
