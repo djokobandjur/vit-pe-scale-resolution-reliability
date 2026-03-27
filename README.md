@@ -16,7 +16,7 @@
 
 ⚠️ **IMPORTANT:** The folder structure must be identical to the diagram below (Section B). All script paths are hardcoded.
 
-1.  **From GitHub:** Download the repository and copy the following into the root folder `/pe_experiment/`:
+1.  **From GitHub:** Download the repository and copy the following files into the root folder `/pe_experiment/`:
     *   The `table1_scripts` folder (including all 14 scripts).
     *   Python scripts: `00_setup_imagenet.py` and `full_scale_experiment.py`.
     *   Text files: `imagenet100_classes.txt` and `val_labels.txt`.
