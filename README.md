@@ -47,7 +47,7 @@
 ### **Step 4 --- Code Execution**
 *   **Starting from Cell 2:** Run the remaining cells one by one in the given order, from top to bottom.
 *   **Sequential Execution:** Ensure each cell finishes completely before starting the next one to maintain the correct data flow.
-*   **Automatic Saving:** The scripts will automatically create the `figures/`, `table1/`, and `table3/` folders within `/pe_experiment/results/` and **save/store all generated outputs (results) directly into them.**
+*   **Automatic Saving:** The scripts will automatically create the `figures/`and `table1/` folders within `/pe_experiment/results/` and **save/store all generated outputs (results) directly into them.**
 
 
 
