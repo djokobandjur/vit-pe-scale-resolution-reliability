@@ -53,6 +53,9 @@
 *   **Sequential Execution:** Ensure each cell finishes completely before starting the next one to maintain the correct data flow.
 *   **Automatic Saving:** The scripts will automatically create the `figures/`and `table1/` folders within `/pe_experiment/results/` and **save/store all generated outputs (results) directly into them.**
 
+### **Verification:**
+Once execution is complete, you can compare your generated outputs in /results/figures/ and /results/table1/ with the original study results provided in the original_paper_results/ folder for consistency.
+
 
 
 #### **Section B: STRUCTURE BEFORE START OF REPRODUCTION**
