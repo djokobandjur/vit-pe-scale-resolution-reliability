@@ -1,0 +1,47 @@
+{
+  "config": {
+    "num_images": 100,
+    "seed": 42,
+    "perplexity": 40,
+    "n_iter": 1000,
+    "layer": "last_block"
+  },
+  "datasets": {
+    "imagenet100": {
+      "learned": {
+        "shape": 19600,
+        "n_patches": 196
+      },
+      "sinusoidal": {
+        "shape": 19600,
+        "n_patches": 196
+      },
+      "rope": {
+        "shape": 19600,
+        "n_patches": 196
+      },
+      "alibi": {
+        "shape": 19600,
+        "n_patches": 196
+      }
+    },
+    "cifar100": {
+      "learned": {
+        "shape": 6400,
+        "n_patches": 64
+      },
+      "sinusoidal": {
+        "shape": 6400,
+        "n_patches": 64
+      },
+      "rope": {
+        "shape": 6400,
+        "n_patches": 64
+      },
+      "alibi": {
+        "shape": 6400,
+        "n_patches": 64
+      }
+    }
+  }
+}

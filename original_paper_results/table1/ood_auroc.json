@@ -1,0 +1,342 @@
+{
+  "imagenet100": {
+    "learned": {
+      "per_seed": {
+        "42": {
+          "fgsm_auroc": 0.2388,
+          "pgd_auroc": 0.1503,
+          "vta_auroc": 0.7485,
+          "mean_auroc": 0.1946,
+          "variance_gini": 0.4555722768209367,
+          "clean_acc": 79.68
+        },
+        "123": {
+          "fgsm_auroc": 0.2354,
+          "pgd_auroc": 0.1539,
+          "vta_auroc": 0.7244,
+          "mean_auroc": 0.1946,
+          "variance_gini": 0.4548192043556616,
+          "clean_acc": 79.9
+        },
+        "456": {
+          "fgsm_auroc": 0.2206,
+          "pgd_auroc": 0.1518,
+          "vta_auroc": 0.8036,
+          "mean_auroc": 0.1862,
+          "variance_gini": 0.4618590431963139,
+          "clean_acc": 78.74
+        }
+      },
+      "fgsm_auroc": {
+        "mean": 0.2316,
+        "std": 0.0079
+      },
+      "pgd_auroc": {
+        "mean": 0.152,
+        "std": 0.0015
+      },
+      "variance_gini": {
+        "mean": 0.4574,
+        "std": 0.0032
+      },
+      "ood_auroc_mean": 0.1918,
+      "ood_auroc_std": 0.0047
+    },
+    "sinusoidal": {
+      "per_seed": {
+        "42": {
+          "fgsm_auroc": 0.3222,
+          "pgd_auroc": 0.2877,
+          "vta_auroc": 0.5335,
+          "mean_auroc": 0.305,
+          "variance_gini": 0.5226688096714112,
+          "clean_acc": 81.84
+        },
+        "123": {
+          "fgsm_auroc": 0.3302,
+          "pgd_auroc": 0.3064,
+          "vta_auroc": 0.5298,
+          "mean_auroc": 0.3183,
+          "variance_gini": 0.5226688096714112,
+          "clean_acc": 81.3
+        },
+        "456": {
+          "fgsm_auroc": 0.331,
+          "pgd_auroc": 0.2812,
+          "vta_auroc": 0.5084,
+          "mean_auroc": 0.3061,
+          "variance_gini": 0.5226688096714112,
+          "clean_acc": 81.24
+        }
+      },
+      "fgsm_auroc": {
+        "mean": 0.3278,
+        "std": 0.004
+      },
+      "pgd_auroc": {
+        "mean": 0.2918,
+        "std": 0.0107
+      },
+      "variance_gini": {
+        "mean": 0.5227,
+        "std": 0.0
+      },
+      "ood_auroc_mean": 0.3098,
+      "ood_auroc_std": 0.0073
+    },
+    "rope": {
+      "per_seed": {
+        "42": {
+          "fgsm_auroc": 0.9863,
+          "pgd_auroc": 0.984,
+          "vta_auroc": 0.9831,
+          "mean_auroc": 0.9852,
+          "variance_gini": 0.5069889115513746,
+          "clean_acc": 84.96
+        },
+        "123": {
+          "fgsm_auroc": 0.9836,
+          "pgd_auroc": 0.9773,
+          "vta_auroc": 0.9799,
+          "mean_auroc": 0.9804,
+          "variance_gini": 0.5069889115513746,
+          "clean_acc": 84.18
+        },
+        "456": {
+          "fgsm_auroc": 0.9875,
+          "pgd_auroc": 0.9866,
+          "vta_auroc": 0.985,
+          "mean_auroc": 0.987,
+          "variance_gini": 0.5069889115513746,
+          "clean_acc": 84.38
+        }
+      },
+      "fgsm_auroc": {
+        "mean": 0.9858,
+        "std": 0.0016
+      },
+      "pgd_auroc": {
+        "mean": 0.9826,
+        "std": 0.0039
+      },
+      "variance_gini": {
+        "mean": 0.507,
+        "std": 0.0
+      },
+      "ood_auroc_mean": 0.9842,
+      "ood_auroc_std": 0.0028
+    },
+    "alibi": {
+      "per_seed": {
+        "42": {
+          "fgsm_auroc": 0.8006,
+          "pgd_auroc": 0.5685,
+          "vta_auroc": 0.4348,
+          "mean_auroc": 0.6846,
+          "variance_gini": 0.9981357903422916,
+          "clean_acc": 81.18
+        },
+        "123": {
+          "fgsm_auroc": 0.939,
+          "pgd_auroc": 0.679,
+          "vta_auroc": 0.5254,
+          "mean_auroc": 0.809,
+          "variance_gini": 0.9981357903422916,
+          "clean_acc": 81.32
+        },
+        "456": {
+          "fgsm_auroc": 0.9405,
+          "pgd_auroc": 0.9405,
+          "vta_auroc": 0.9405,
+          "mean_auroc": 0.9405,
+          "variance_gini": 0.9981357903422916,
+          "clean_acc": 80.66
+        }
+      },
+      "fgsm_auroc": {
+        "mean": 0.8934,
+        "std": 0.0656
+      },
+      "pgd_auroc": {
+        "mean": 0.7293,
+        "std": 0.156
+      },
+      "variance_gini": {
+        "mean": 0.9981,
+        "std": 0.0
+      },
+      "ood_auroc_mean": 0.8114,
+      "ood_auroc_std": 0.1108
+    }
+  },
+  "cifar100": {
+    "learned": {
+      "per_seed": {
+        "42": {
+          "fgsm_auroc": 0.0751,
+          "pgd_auroc": 0.0459,
+          "vta_auroc": 0.4022,
+          "mean_auroc": 0.0605,
+          "variance_gini": 0.3145141488637029,
+          "clean_acc": 68.72
+        },
+        "123": {
+          "fgsm_auroc": 0.07,
+          "pgd_auroc": 0.0478,
+          "vta_auroc": 0.2576,
+          "mean_auroc": 0.0589,
+          "variance_gini": 0.3167520561320676,
+          "clean_acc": 68.07
+        },
+        "456": {
+          "fgsm_auroc": 0.0753,
+          "pgd_auroc": 0.0487,
+          "vta_auroc": 0.2984,
+          "mean_auroc": 0.062,
+          "variance_gini": 0.32707401425792426,
+          "clean_acc": 68.04
+        }
+      },
+      "fgsm_auroc": {
+        "mean": 0.0735,
+        "std": 0.0025
+      },
+      "pgd_auroc": {
+        "mean": 0.0475,
+        "std": 0.0012
+      },
+      "variance_gini": {
+        "mean": 0.3194,
+        "std": 0.0055
+      },
+      "ood_auroc_mean": 0.0605,
+      "ood_auroc_std": 0.0018
+    },
+    "sinusoidal": {
+      "per_seed": {
+        "42": {
+          "fgsm_auroc": 0.1511,
+          "pgd_auroc": 0.1365,
+          "vta_auroc": 0.5734,
+          "mean_auroc": 0.1438,
+          "variance_gini": 0.6401944073685226,
+          "clean_acc": 67.4
+        },
+        "123": {
+          "fgsm_auroc": 0.179,
+          "pgd_auroc": 0.1486,
+          "vta_auroc": 0.5997,
+          "mean_auroc": 0.1638,
+          "variance_gini": 0.6401944073685226,
+          "clean_acc": 66.41
+        },
+        "456": {
+          "fgsm_auroc": 0.1598,
+          "pgd_auroc": 0.1384,
+          "vta_auroc": 0.5889,
+          "mean_auroc": 0.1491,
+          "variance_gini": 0.6401944073685226,
+          "clean_acc": 66.95
+        }
+      },
+      "fgsm_auroc": {
+        "mean": 0.1633,
+        "std": 0.0117
+      },
+      "pgd_auroc": {
+        "mean": 0.1412,
+        "std": 0.0053
+      },
+      "variance_gini": {
+        "mean": 0.6402,
+        "std": 0.0
+      },
+      "ood_auroc_mean": 0.1522,
+      "ood_auroc_std": 0.0085
+    },
+    "rope": {
+      "per_seed": {
+        "42": {
+          "fgsm_auroc": 0.9819,
+          "pgd_auroc": 0.9804,
+          "vta_auroc": 0.9803,
+          "mean_auroc": 0.9812,
+          "variance_gini": 0.6248978116770882,
+          "clean_acc": 73.1
+        },
+        "123": {
+          "fgsm_auroc": 0.9786,
+          "pgd_auroc": 0.9783,
+          "vta_auroc": 0.9775,
+          "mean_auroc": 0.9784,
+          "variance_gini": 0.6248978116770882,
+          "clean_acc": 73.35
+        },
+        "456": {
+          "fgsm_auroc": 0.9801,
+          "pgd_auroc": 0.9782,
+          "vta_auroc": 0.9779,
+          "mean_auroc": 0.9792,
+          "variance_gini": 0.6248978116770882,
+          "clean_acc": 73.45
+        }
+      },
+      "fgsm_auroc": {
+        "mean": 0.9802,
+        "std": 0.0013
+      },
+      "pgd_auroc": {
+        "mean": 0.979,
+        "std": 0.001
+      },
+      "variance_gini": {
+        "mean": 0.6249,
+        "std": 0.0
+      },
+      "ood_auroc_mean": 0.9796,
+      "ood_auroc_std": 0.0012
+    },
+    "alibi": {
+      "per_seed": {
+        "42": {
+          "fgsm_auroc": 0.8429,
+          "pgd_auroc": 0.5574,
+          "vta_auroc": 0.5378,
+          "mean_auroc": 0.7002,
+          "variance_gini": 0.9981339306849271,
+          "clean_acc": 67.39
+        },
+        "123": {
+          "fgsm_auroc": 0.8683,
+          "pgd_auroc": 0.5786,
+          "vta_auroc": 0.5615,
+          "mean_auroc": 0.7234,
+          "variance_gini": 0.9981339306849271,
+          "clean_acc": 68.16
+        },
+        "456": {
+          "fgsm_auroc": 0.7059,
+          "pgd_auroc": 0.6296,
+          "vta_auroc": 0.5493,
+          "mean_auroc": 0.6678,
+          "variance_gini": 0.9981339306849271,
+          "clean_acc": 67.42
+        }
+      },
+      "fgsm_auroc": {
+        "mean": 0.8057,
+        "std": 0.0713
+      },
+      "pgd_auroc": {
+        "mean": 0.5885,
+        "std": 0.0303
+      },
+      "variance_gini": {
+        "mean": 0.9981,
+        "std": 0.0
+      },
+      "ood_auroc_mean": 0.6971,
+      "ood_auroc_std": 0.0508
+    }
+  }
+}

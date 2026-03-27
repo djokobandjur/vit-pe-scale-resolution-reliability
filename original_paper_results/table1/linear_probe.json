@@ -1,0 +1,266 @@
+{
+  "imagenet100": {
+    "learned": {
+      "per_seed": {
+        "42": {
+          "position": 87.75510204081633,
+          "row": 74.46153846153847,
+          "column": 38.256410256410255
+        },
+        "123": {
+          "position": 84.6938775510204,
+          "row": 77.52564102564101,
+          "column": 29.56410256410257
+        },
+        "456": {
+          "position": 82.14285714285714,
+          "row": 76.51282051282051,
+          "column": 25.999999999999996
+        }
+      },
+      "position": {
+        "mean": 84.8639,
+        "std": 2.2943
+      },
+      "row": {
+        "mean": 76.1667,
+        "std": 1.2746
+      },
+      "column": {
+        "mean": 31.2735,
+        "std": 5.1476
+      },
+      "source": "analysis_data.json"
+    },
+    "sinusoidal": {
+      "per_seed": {
+        "42": {
+          "position": 100.0,
+          "row": 89.32051282051283,
+          "column": 0.0
+        },
+        "123": {
+          "position": 100.0,
+          "row": 89.32051282051283,
+          "column": 0.0
+        },
+        "456": {
+          "position": 100.0,
+          "row": 89.32051282051283,
+          "column": 0.0
+        }
+      },
+      "position": {
+        "mean": 100.0,
+        "std": 0.0
+      },
+      "row": {
+        "mean": 89.3205,
+        "std": 0.0
+      },
+      "column": {
+        "mean": 0.0,
+        "std": 0.0
+      },
+      "source": "analysis_data.json"
+    },
+    "rope": {
+      "per_seed": {
+        "42": {
+          "position": 100.0,
+          "row": 94.93589743589745,
+          "column": 0.0
+        },
+        "123": {
+          "position": 100.0,
+          "row": 94.93589743589745,
+          "column": 0.0
+        },
+        "456": {
+          "position": 100.0,
+          "row": 94.93589743589745,
+          "column": 0.0
+        }
+      },
+      "position": {
+        "mean": 100.0,
+        "std": 0.0
+      },
+      "row": {
+        "mean": 94.9359,
+        "std": 0.0
+      },
+      "column": {
+        "mean": 0.0,
+        "std": 0.0
+      },
+      "source": "analysis_data.json"
+    },
+    "alibi": {
+      "per_seed": {
+        "42": {
+          "position": 100.0,
+          "row": 91.85897435897436,
+          "column": 0.0
+        },
+        "123": {
+          "position": 100.0,
+          "row": 91.85897435897436,
+          "column": 0.0
+        },
+        "456": {
+          "position": 100.0,
+          "row": 91.85897435897436,
+          "column": 0.0
+        }
+      },
+      "position": {
+        "mean": 100.0,
+        "std": 0.0
+      },
+      "row": {
+        "mean": 91.859,
+        "std": 0.0
+      },
+      "column": {
+        "mean": 0.0,
+        "std": 0.0
+      },
+      "source": "analysis_data.json"
+    }
+  },
+  "cifar100": {
+    "learned": {
+      "per_seed": {
+        "42": {
+          "position": 100.0,
+          "row": 89.23076923076924,
+          "column": 89.23076923076924
+        },
+        "123": {
+          "position": 100.0,
+          "row": 81.2820512820513,
+          "column": 89.10256410256409
+        },
+        "456": {
+          "position": 100.0,
+          "row": 86.02564102564102,
+          "column": 90.64102564102564
+        }
+      },
+      "position": {
+        "mean": 100.0,
+        "std": 0.0
+      },
+      "row": {
+        "mean": 85.5128,
+        "std": 3.2652
+      },
+      "column": {
+        "mean": 89.6581,
+        "std": 0.697
+      },
+      "source": "computed_from_model",
+      "n_patches_side": 8
+    },
+    "sinusoidal": {
+      "per_seed": {
+        "42": {
+          "position": 100.0,
+          "row": 84.35897435897436,
+          "column": 0.0
+        },
+        "123": {
+          "position": 100.0,
+          "row": 84.35897435897436,
+          "column": 0.0
+        },
+        "456": {
+          "position": 100.0,
+          "row": 84.35897435897436,
+          "column": 0.0
+        }
+      },
+      "position": {
+        "mean": 100.0,
+        "std": 0.0
+      },
+      "row": {
+        "mean": 84.359,
+        "std": 0.0
+      },
+      "column": {
+        "mean": 0.0,
+        "std": 0.0
+      },
+      "source": "computed_from_model",
+      "n_patches_side": 8
+    },
+    "rope": {
+      "per_seed": {
+        "42": {
+          "position": 100.0,
+          "row": 95.25641025641025,
+          "column": 0.0
+        },
+        "123": {
+          "position": 100.0,
+          "row": 95.25641025641025,
+          "column": 0.0
+        },
+        "456": {
+          "position": 100.0,
+          "row": 95.25641025641025,
+          "column": 0.0
+        }
+      },
+      "position": {
+        "mean": 100.0,
+        "std": 0.0
+      },
+      "row": {
+        "mean": 95.2564,
+        "std": 0.0
+      },
+      "column": {
+        "mean": 0.0,
+        "std": 0.0
+      },
+      "source": "computed_from_model",
+      "n_patches_side": 8
+    },
+    "alibi": {
+      "per_seed": {
+        "42": {
+          "position": 100.0,
+          "row": 25.128205128205128,
+          "column": 0.0
+        },
+        "123": {
+          "position": 100.0,
+          "row": 25.128205128205128,
+          "column": 0.0
+        },
+        "456": {
+          "position": 100.0,
+          "row": 25.128205128205128,
+          "column": 0.0
+        }
+      },
+      "position": {
+        "mean": 100.0,
+        "std": 0.0
+      },
+      "row": {
+        "mean": 25.1282,
+        "std": 0.0
+      },
+      "column": {
+        "mean": 0.0,
+        "std": 0.0
+      },
+      "source": "computed_from_model",
+      "n_patches_side": 8
+    }
+  }
+}
