@@ -22,9 +22,10 @@
     *   Text files: `imagenet100_classes.txt` and `val_labels.txt`.
     *   **The Colab notebook: `reproduce_paper_results.ipynb`.**
 
-2.  **ImageNet Dataset:** Create a folder named `imagenet` within `/pe_experiment/`. 
-    *   Place the `ILSVRC2012_img_val.tar` archive (from [image-net.org](https://image-net.org)) inside it.
+2.  **ImageNet Dataset Acquisition:** Create a folder named `imagenet` within `/pe_experiment/`. 
+    *   ImageNet requires registration. Go to image-net.org and register with an academic email. Once approved, you will receive an email with a unique download link. Use it to download the ILSVRC2012_img_val.tar archive (~6.3 GB).
     *   **Do NOT extract the archive.** The Colab script will handle the extraction automatically.
+
 
 3.  **Model Results (7.6 GB Total):** 
     *   Open the [ImageNet trained models](https://drive.google.com/drive/folders/1gPwVSE0qctWVeaGwCv3eGQdQR4IK6Xds?usp=sharing) and [CIFAR100 trained models](https://drive.google.com/drive/folders/16pEAbdH4aRpw-3s2vm4TbMey1GPQn2FQ?usp=sharing) links.
