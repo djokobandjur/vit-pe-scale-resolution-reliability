@@ -24,7 +24,7 @@
 
 2.  **ImageNet Dataset Acquisition:** Create a folder named `imagenet` within `/pe_experiment/`. 
     *   ImageNet requires registration. Go to image-net.org and register with an academic email. Once approved, you will receive an email with a unique download link. Use it to download the ILSVRC2012_img_val.tar archive (~6.3 GB).
-    *   **Do NOT extract the archive.** The Colab script will handle the extraction automatically.
+    *   Place the archive inside /imagenet/. **Do NOT extract the archive.** The Colab script will handle the extraction automatically.
 
 
 3.  **Model Results (7.6 GB Total):** 
