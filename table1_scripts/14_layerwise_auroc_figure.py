@@ -33,7 +33,7 @@ PE_COLORS    = {'learned': '#E24B4A', 'sinusoidal': '#185FA5',
                 'rope': '#1D9E75', 'alibi': '#BA7517'}
 PE_MARKERS   = {'learned': 'o', 'sinusoidal': 's', 'rope': '^', 'alibi': 'D'}
 
-ALL_LAYERS   = list(range(0, 12))   # 0-indeksirani u JSON-u
+ALL_LAYERS   = list(range(1, 13))   # ključevi '1'..'12'
 
 # ── Load data ────────────────────────────────────────────────────────────
 with open(DATA_PATH) as f:
@@ -57,11 +57,14 @@ for ax, (smer_key, smer_title) in zip(axes, smer_configs):
             continue
 
         la    = data['layer_auroc']
-        means = np.array([la.get(str(l), {}).get('mean', float('nan'))
-                          for l in ALL_LAYERS])
-        stds  = np.array([la.get(str(l), {}).get('std',  float('nan'))
-                          for l in ALL_LAYERS])
-        xs    = np.arange(1, 13)   # 1-indeksirani za prikaz
+        # Auto-detektuj format ključeva (0-bazirani ili 1-bazirani)
+        if '1' in la and la['1']:
+            keys = [str(l) for l in range(1, 13)]
+        else:
+            keys = [str(l) for l in range(0, 12)]
+        means = np.array([la.get(k, {}).get('mean', float('nan')) for k in keys])
+        stds  = np.array([la.get(k, {}).get('std',  float('nan')) for k in keys])
+        xs    = np.arange(1, 13)
 
         ax.plot(xs, means,
                 color=PE_COLORS[pe], marker=PE_MARKERS[pe],
@@ -77,15 +80,13 @@ for ax, (smer_key, smer_title) in zip(axes, smer_configs):
     ax.text(11.8, 0.61, 'overconfident\nthreshold', fontsize=7.5,
             color='#aaaaaa', ha='right', va='bottom')
 
-    # L3 sentinel
-    ax.axvline(x=3, color='#888888', linestyle=':', linewidth=1.0, alpha=0.6)
-    ax.text(3.1, 0.99, 'L3\n(best)', fontsize=7.5, color='#888888', va='top')
+
 
     ax.set_xlabel('Transformer Layer', fontsize=12)
     ax.set_ylabel('OOD AUROC', fontsize=12)
     ax.set_title(smer_title, fontsize=11, pad=10, color='#333333')
     ax.set_xticks(range(1, 13))
-    ax.set_xlim(0.5, 12.5)
+    ax.set_xlim(0.3, 12.7)
     ax.set_ylim(0.40, 1.02)
     ax.grid(True, alpha=0.25, linestyle='--', linewidth=0.7)
     ax.spines['top'].set_visible(False)
