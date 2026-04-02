@@ -1,8 +1,8 @@
 """
-SCRIPT 11 — Figure 4: Spatial Decodability kroz all 12 layers
+SKRIPTA 11 — Figure 4: Spatial Decodability kroz svih 12 slojeva
 =================================================================
-Computes linear probe for all layers [1..12] and creates a line chart
-with sigma shadow (error bars per 3 seeds).
+Racuna linear probe za sve slojeve [1..12] i kreira linijski grafikon
+sa sigma senkom (error bars kroz 3 seed-a).
 
 Figure 4 struktura:
   - X osa: Layer (1-12)
@@ -32,7 +32,7 @@ from tqdm import tqdm
 sys.path.insert(0, '/content')
 from full_scale_experiment import VisionTransformer
 
-# ── Configuration ─────────────────────────────────────────────────────────────
+# ── Konfiguracija ─────────────────────────────────────────────────────────────
 DRIVE_ROOT       = '/content/drive/My Drive/pe_experiment'
 RESULTS_IN       = os.path.join(DRIVE_ROOT, 'results')
 RESULTS_CF       = os.path.join(DRIVE_ROOT, 'results_cifar100')
@@ -61,7 +61,7 @@ CF_MEAN = [0.5071,0.4867,0.4408]; CF_STD = [0.2675,0.2565,0.2761]
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 print(f"Device: {device} ({torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'CPU'})")
 
-# ── Data loaders ───────────────────────────────────────────────────────────────
+# ── Dataloaderi ───────────────────────────────────────────────────────────────
 def make_imagenet_loader():
     tf = transforms.Compose([
         transforms.Resize(256), transforms.CenterCrop(224),
@@ -81,7 +81,7 @@ def make_cifar_loader():
     return DataLoader(subset, batch_size=BATCH_SIZE, shuffle=False,
                       num_workers=4, pin_memory=True)
 
-# ── Architecture auto-detection ────────────────────────────────────────────────
+# ── Auto-detekcija arhitekture ────────────────────────────────────────────────
 def detect_arch(state):
     pw         = state['patch_embed.proj.weight']
     patch_size = pw.shape[-1]
@@ -112,7 +112,7 @@ def load_model(results_root, pe_type, seed):
         embed_dim=768, depth=12, num_heads=12,
         mlp_ratio=4.0, dropout=0.1, pe_type=pe_type
     ).to(device)
-    model.load_state_dict(state, strict=False)
+    model.load_state_dict(state)
     model.eval()
     return model, n_patches
 
@@ -140,7 +140,7 @@ def run_gpu_probe(feats, labels, num_classes, epochs=PROBE_EPOCHS):
         acc = (head(va_X).argmax(1) == va_y).float().mean().item() * 100
     return round(acc, 4)
 
-# ── Ekstrakcija all 12 layers odjednom ─────────────────────────────────────
+# ── Ekstrakcija svih 12 slojeva odjednom ─────────────────────────────────────
 @torch.no_grad()
 def extract_all_layers(model, loader, n_patches):
     storage = {l: [] for l in ALL_LAYERS}
@@ -170,7 +170,7 @@ def extract_all_layers(model, loader, n_patches):
             result[l] = cat.reshape(B * N, D)
     return result
 
-# ── Main loop ─────────────────────────────────────────────────────────────
+# ── Glavna petlja ─────────────────────────────────────────────────────────────
 output = {}
 
 dataset_configs = [
@@ -209,7 +209,7 @@ for ds_name, results_root, loader_fn in dataset_configs:
                 print(f"L{l}={acc:.1f}%", end=' ', flush=True)
             print()
 
-        # Aggregate over seeds: mean i std per layer
+        # Agregacija: mean i std po sloju
         layer_agg = {}
         for l in ALL_LAYERS:
             vals = layer_accs[l]
@@ -234,13 +234,13 @@ for ds_name, results_root, loader_fn in dataset_configs:
 
     del loader
 
-# ── Save JSON ──────────────────────────────────────────────────────────────
+# ── Sacuvaj JSON ──────────────────────────────────────────────────────────────
 out_path = os.path.join(OUT_DATA_DIR, 'spatial_decay_all_layers.json')
 with open(out_path, 'w') as f:
     json.dump(output, f, indent=2)
 print(f"\n✓ Podaci sacuvani: {out_path}")
 
-# ── Create Figure 4 ─────────────────────────────────────────────────────────
+# ── Kreiranje Figure 4 ────────────────────────────────────────────────────────
 fig, axes = plt.subplots(1, 2, figsize=(14, 6), sharey=False)
 fig.patch.set_facecolor('white')
 
@@ -272,7 +272,7 @@ for ax, (ds_key, ds_title) in zip(axes, ds_configs):
         ax.fill_between(xs,
                         means - stds,
                         means + stds,
-                        alpha=0.15,
+                        alpha=0.20,
                         color=PE_COLORS[pe],
                         zorder=2)
 
@@ -291,13 +291,10 @@ for ax, (ds_key, ds_title) in zip(axes, ds_configs):
 
     # Legenda samo na levom panelu
     if ds_key == 'imagenet100':
-        ax.legend(fontsize=10, framealpha=0.9, loc='upper right',
+        ax.legend(fontsize=10, framealpha=0.9, loc='center right',
                   frameon=True, edgecolor='#dddddd')
 
-    # Vertikalna linija na sloju 3 (best_layer iz cross-domain)
-    ax.axvline(x=3, color='#888888', linestyle=':', linewidth=1.0, alpha=0.6)
-    ax.text(3.1, 102, 'Best OOD\nlayer (L3)',
-            fontsize=7.5, color='#888888', va='top')
+
 
 # Naslov
 fig.suptitle(
@@ -308,7 +305,7 @@ fig.suptitle(
 
 plt.tight_layout()
 
-# Save
+# Snimi
 png_path = os.path.join(OUT_FIG_DIR, 'figure4_spatial_decay.png')
 pdf_path = os.path.join(OUT_FIG_DIR, 'figure4_spatial_decay.pdf')
 fig.savefig(png_path, dpi=300, bbox_inches='tight', facecolor='white')
