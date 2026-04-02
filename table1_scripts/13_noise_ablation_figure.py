@@ -1,5 +1,5 @@
 """
-SKRIPTA 13 — Figure 5: PE Noise Ablation Study
+SCRIPT 13 — Figure 5: PE Noise Ablation Study
 ===============================================
 Input:
   results/analysis_data.json
