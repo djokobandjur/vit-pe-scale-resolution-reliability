@@ -1,15 +1,15 @@
 """
-SKRIPTA 11 — Figure 4: Spatial Decodability kroz svih 12 slojeva
+SCRIPT 11 — Figure 4: Spatial Decodability across all 12 layers
 =================================================================
-Racuna linear probe za sve slojeve [1..12] i kreira linijski grafikon
-sa sigma senkom (error bars kroz 3 seed-a).
+Calculates the linear probe for all layers [1..12] and creates a line graph
+with sigma shadow (error bars through 3 seeds).
 
-Figure 4 struktura:
-  - X osa: Layer (1-12)
-  - Y osa: Position Decoding Accuracy (%)
-  - 4 linije: Learned, Sinusoidal, RoPE, ALiBi
-  - 2 panela: IN-100 (levo), C-100 (desno)
-  - Senka oko linije = +/- sigma kroz 3 seed-a
+Figure 4 structure: 
+- X axis: Layer (1-12) 
+- Y axis: Position Decoding Accuracy (%) 
+- 4 lines: Learned, Sinusoidal, RoPE, ALiBi 
+- 2 panels: IN-100 (left), C-100 (right) 
+- Shadow around the line = +/- sigma through 3 seeds
 
 Output:
   results/figures/figure4_spatial_decay.png (300 DPI)
