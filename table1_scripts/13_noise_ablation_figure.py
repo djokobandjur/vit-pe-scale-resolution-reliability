@@ -1,8 +1,6 @@
 """
-SCRIPT 13 — Figure 5: PE Noise Ablation Study
+SKRIPTA 13 — Figure 5: PE Noise Ablation Study
 ===============================================
-Generate Figure 5 from analysis_data.json 
-
 Input:
   results/analysis_data.json
 
@@ -14,13 +12,19 @@ Run in Colab:
     %run /content/13_noise_ablation_figure.py
 """
 
+"""
+SCRIPT 13 — Figure 5: PE Noise Ablation Study
+===============================================
+
+"""
+
 import os, json
 import numpy as np
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
-# ── Configuration ─────────────────────────────────────────────────────────────
+# ── Konfiguracija ─────────────────────────────────────────────────────────────
 DRIVE_ROOT   = '/content/drive/My Drive/pe_experiment'
 DATA_PATH    = os.path.join(DRIVE_ROOT, 'results', 'analysis_data.json')
 OUT_FIG_DIR  = os.path.join(DRIVE_ROOT, 'results', 'figures')
@@ -36,17 +40,17 @@ PE_MARKERS   = {'learned': 'o', 'sinusoidal': 's', 'rope': '^', 'alibi': 'D'}
 SEEDS        = ['42', '123', '456']
 NOISE_LEVELS = [0.0, 0.1, 0.2, 0.5, 1.0, 2.0, 3.0, 5.0]
 
-# ── Load data ────────────────────────────────────────────────────────────
+# ── Učitaj podatke ────────────────────────────────────────────────────────────
 with open(DATA_PATH) as f:
     data = json.load(f)
 
 print(f"Ucitano: {DATA_PATH}")
 
-# ── Create figure ──────────────────────────────────────────────────────────
+# ── Kreiranje figure ──────────────────────────────────────────────────────────
 fig, axes = plt.subplots(1, 2, figsize=(14, 6))
 fig.patch.set_facecolor('white')
 
-# ── Panel 1: Apsolutna tacnost ────────────────────────────────────────────────
+# ── Panel 1: Apsolutna tačnost ────────────────────────────────────────────────
 ax = axes[0]
 for pe in PE_TYPES:
     all_accs = []
@@ -64,10 +68,7 @@ for pe in PE_TYPES:
             color=PE_COLORS[pe], marker=PE_MARKERS[pe],
             markersize=5, linewidth=1.8, label=PE_LABELS[pe], zorder=3)
     ax.fill_between(NOISE_LEVELS, means - stds, means + stds,
-                    alpha=0.15, color=PE_COLORS[pe], zorder=2)
-
-ax.axvline(x=1.0, color='#888888', linestyle=':', linewidth=1.0, alpha=0.7)
-ax.text(1.05, 82, 'Critical\nthreshold', fontsize=7.5, color='#888888', va='top')
+                    alpha=0.20, color=PE_COLORS[pe], zorder=2)
 
 ax.set_xlabel('Noise Scale (σ)', fontsize=12)
 ax.set_ylabel('Top-1 Accuracy (%)', fontsize=12)
@@ -83,7 +84,7 @@ ax.spines['right'].set_visible(False)
 ax.legend(fontsize=10, framealpha=0.9, loc='lower left',
           frameon=True, edgecolor='#dddddd')
 
-# ── Panel 2: Relativna tacnost ────────────────────────────────────────────────
+# ── Panel 2: Relativna tačnost ────────────────────────────────────────────────
 ax2 = axes[1]
 for pe in PE_TYPES:
     all_rel = []
@@ -103,11 +104,12 @@ for pe in PE_TYPES:
              color=PE_COLORS[pe], marker=PE_MARKERS[pe],
              markersize=5, linewidth=1.8, label=PE_LABELS[pe], zorder=3)
     ax2.fill_between(NOISE_LEVELS, means - stds, means + stds,
-                     alpha=0.15, color=PE_COLORS[pe], zorder=2)
+                     alpha=0.20, color=PE_COLORS[pe], zorder=2)
 
+# --- VRAĆENA HORIZONTALNA LINIJA I TEKST ---
 ax2.axhline(y=50, color='#888888', linestyle=':', linewidth=1.0, alpha=0.7)
-ax2.text(0.12, 51, '50% threshold', fontsize=7.5, color='#888888', va='bottom')
-ax2.axvline(x=1.0, color='#888888', linestyle=':', linewidth=1.0, alpha=0.7)
+ax2.text(0.02, 51, '50% threshold', fontsize=7.5, color='#888888', va='bottom')
+# -------------------------------------------
 
 ax2.set_xlabel('Noise Scale (σ)', fontsize=12)
 ax2.set_ylabel('Relative Accuracy (% of clean)', fontsize=12)
@@ -129,7 +131,7 @@ fig.suptitle(
 )
 plt.tight_layout()
 
-# ── Save ─────────────────────────────────────────────────────────────────────
+# ── Snimi ─────────────────────────────────────────────────────────────────────
 png_path = os.path.join(OUT_FIG_DIR, 'figure5_noise_ablation.png')
 pdf_path = os.path.join(OUT_FIG_DIR, 'figure5_noise_ablation.pdf')
 fig.savefig(png_path, dpi=300, bbox_inches='tight', facecolor='white')
