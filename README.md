@@ -53,6 +53,8 @@
 *   **Sequential Execution:** Ensure each cell finishes completely before starting the next one to maintain the correct data flow.
 *   **Automatic Saving:** The scripts will automatically create the `figures/`and `table1/` folders within `/pe_experiment/results/` and **save/store all generated outputs (results) directly into them.**
 
+   **For CKA validation of the Orthogonality Trap** run the cka_colab_notebook.ipynb.
+
 ### **Verification:**
 Once execution is complete, you can compare your generated outputs in /results/figures/ and /results/table1/ with the original study results provided in the original_paper_results/ folder for consistency.
 
@@ -95,6 +97,8 @@ Once execution is complete, you can compare your generated outputs in /results/f
 │   └── adversarial_pe_results_cifar100.json
 ├── imagenet100_classes.txt
 ├── val_labels.txt
+├── cka_orthogonality_trap.py
+├── cka_colab_notebook.ipynb        
 ├── 00_setup_imagenet.py
 ├── full_scale_experiment.py
 └── reproduce_paper_results.ipynb
