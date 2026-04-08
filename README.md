@@ -1,6 +1,6 @@
 [![DOI](https://zenodo.org/badge/1190775611.svg)](https://doi.org/10.5281/zenodo.19386421)
 
-#### **Section A: COMPLETE ALL REQUIRED STEPS IN ORDER TO REPRODUCE ALL RESULTS**
+#### **Section A: COMPLETE ALL REQUIRED STEPS IN ORDER TO REPRODUCE RESULTS**
 
 
 
@@ -51,7 +51,7 @@
 ### **Step 4 --- Code Execution**
 *   **Starting from Cell 2:** Run the remaining cells one by one in the given order, from top to bottom.
 *   **Sequential Execution:** Ensure each cell finishes completely before starting the next one to maintain the correct data flow.
-*   **Automatic Saving:** The scripts will automatically create the `figures/`and `table1/` folders within `/pe_experiment/results/` and **save/store all generated outputs (results) directly into them.**
+*   **Automatic Saving:** The scripts will automatically create the **`figures/`** and **`table1/`** directories within **`/pe_experiment/results/`** and **save/store all generated outputs (results) directly into them.**
 
    **For CKA validation of the Orthogonality Trap** run the cka_colab_notebook.ipynb.
 
@@ -60,7 +60,7 @@ Once execution is complete, you can compare your generated outputs in /results/f
 
 
 
-#### **Section B: STRUCTURE BEFORE START OF REPRODUCTION**
+#### **Section B: STRUCTURE BEFORE REPRODUCTION**
 ```text
 /My Drive/pe_experiment/
 ├── table1_scripts/             # (14 scripts)
@@ -78,9 +78,8 @@ Once execution is complete, you can compare your generated outputs in /results/f
 │   ├── rope_seed456/
 │   ├── sinusoidal42/
 │   ├── sinusoidal123/
-│   ├── sinusoidal456/
-│   ├── adversarial_pe_results.json
-│   └── analysis_data.json
+│   └── sinusoidal456/
+│
 ├── results_cifar100/           # CIFAR100 results
 │   ├── alibi_seed42/
 │   ├── alibi_seed123/
@@ -93,8 +92,8 @@ Once execution is complete, you can compare your generated outputs in /results/f
 │   ├── rope_seed456/
 │   ├── sinusoidal42/
 │   ├── sinusoidal123/
-│   ├── sinusoidal456/
-│   └── adversarial_pe_results_cifar100.json
+│   └── sinusoidal456/
+│   
 ├── imagenet100_classes.txt
 ├── val_labels.txt
 ├── cka_orthogonality_trap.py
