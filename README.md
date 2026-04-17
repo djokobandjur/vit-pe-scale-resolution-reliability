@@ -72,9 +72,9 @@ To reproduce the results presented in the paper, we recommend using **Google Col
 
 1.  **From GitHub:** Download the repository and copy the following files into the root folder `/pe_experiment/`:
     *   The `table1_scripts` folder (including all 14 scripts).
-    *   Python scripts: `00_setup_imagenet.py` and `full_scale_experiment.py`.
+    *   Python scripts: `00_setup_imagenet.py`, `full_scale_experiment.py` and `cka_colab_trap.py`.
     *   Text files: `imagenet100_classes.txt` and `val_labels.txt`.
-    *   **The Colab notebook: `reproduce_paper_results.ipynb`.**
+    *   The Colab notebook: `reproduce_paper_results.ipynb` and `cka_colab_notebook.ipynb`.
 
 2.  **ImageNet Dataset Acquisition:** Create a folder named `imagenet` within `/pe_experiment/`. 
     *   ImageNet requires registration. Go to image-net.org and register with an academic email. Once approved, you will receive an email with a unique download link. Use it to download the ILSVRC2012_img_val.tar archive (~6.3 GB).
@@ -90,7 +90,7 @@ To reproduce the results presented in the paper, we recommend using **Google Col
 > **Instruction:** Select all -> **"Make a copy"** -> Move copies to `/pe_experiment/results/` (or `results_cifar100/`). Ensure that each model's individual   **subdirectory** is preserved and contains both `best_model.pth` and `training_history.json`.
 
     *   ⚠️ Note: The folder /pe_experiment/results/ must also contain the two shared analysis files: adversarial_pe_results.json and analysis_data.json (see the diagram).
-    *   ⚠️ Note: The folder /pe_experiment/results_cifar100/ must also contain the shared file: adversarial_pe_results_cifar100.json (see the diagram)
+    *   ⚠️ Note: The folder /pe_experiment/results_cifar100/ must also contain the shared file: adversarial_pe_results_cifar100.json (see the diagram).
 
 ---
 
@@ -123,8 +123,8 @@ Once execution is complete, you can compare your generated outputs in /results/f
 │   └── ILSVRC2012_img_val.tar     # (Keep archived!)
 ├──🗂️ results/                     # ImageNet100 results
 │   ├──🗂️ alibi_seed42/
-│        └── best_model.pth
-│        └── training history.json 
+│       ├── best_model.pth
+│       └── training history.json 
 │   ├──🗂️ alibi_seed123/
 │   ├──🗂️ alibi_seed456/
 │   ├──🗂️ learned_seed42/
@@ -142,8 +142,8 @@ Once execution is complete, you can compare your generated outputs in /results/f
 │
 ├──🗂️ results_cifar100/           # CIFAR100 results
 │   ├──🗂️ alibi_seed42/
-│        └── best_model.pth
-│        └── training history.json 
+│       ├── best_model.pth
+│       └── training history.json 
 │   ├──🗂️ alibi_seed123/
 │   ├──🗂️ alibi_seed456/
 │   ├──🗂️ learned_seed42/
@@ -164,7 +164,7 @@ Once execution is complete, you can compare your generated outputs in /results/f
 ├── 00_setup_imagenet.py
 ├── full_scale_experiment.py
 └── reproduce_paper_results.ipynb
-
+```
 ---
 
 ## Model Architecture
