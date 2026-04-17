@@ -1,7 +1,7 @@
 # Scale, Resolution, and Reliability: A Comparative Information-Theoretic Analysis of Positional Encodings in Vision Transformers
 
 [![DOI](https://zenodo.org/badge/1190775611.svg)](https://doi.org/10.5281/zenodo.19386421)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 
 ## Overview
 
