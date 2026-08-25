@@ -1,8 +1,8 @@
 cff-version: 1.2.0
 message: "If you use this software or replication package, please cite the Zenodo software record."
-title: "Resolution Sensitivity of Attention-Entropy OOD Detection in Vision Transformers: A Controlled Bidirectional Analysis — Major Revision Release"
+title: "Resolution Sensitivity of Attention-Entropy OOD Detection in Vision Transformers: A Controlled Bidirectional Analysis — Science-Lock Major Revision Release"
 type: software
-version: 2.0.0
+version: 2.0.1
 date-released: 2026-08-25
 doi: 10.5281/zenodo.19386421
 repository-code: "https://github.com/djokobandjur/vit-pe-scale-resolution-reliability"
