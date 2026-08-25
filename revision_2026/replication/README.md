@@ -1,13 +1,15 @@
 # Full audited replication package
 
-Recommended immutable public asset:
+Science-lock immutable public asset:
 
-`PR_MAJOR_REVISION_REPLICATION_v0.3.2.zip`
+`PR_MAJOR_REVISION_REPLICATION_v0.3.4.zip`
 
 SHA-256:
 
-`74801b899972af7f4f9ea550dad7daf6564af2b05d6deb7358826eb1d75640a2`
+`d8d2d5bb5cae5c2d6d178f29dd435e3a91a5429aa4c0df3a7a7f99be0c3a6143`
 
-Stable public location: `https://doi.org/10.5281/zenodo.19386421` (Concept DOI; resolves to the latest archived release).
+Stable public location: `https://doi.org/10.5281/zenodo.19386421`.
 
-The GitHub repository should keep the lightweight browseable `derived/`, `policies/`, and `analysis/` files, while Zenodo stores the complete ~92 MB evidence bundle and any large checkpoint archives.
+v0.3.4 adds the complete eight-cell Layer-4 paired-direction correlation diagnostic and the final shared-seed nuisance interpretive boundary. No primary estimate or prelocked gate changes.
+
+The public archive is scoped to artifacts needed to reconstruct PR-D-26-04876 R1. Superseded lineage snapshots not required for manuscript reconstruction are omitted; current E1/E2-C/E3/E6 evidence and the current-base lineage reference are retained.
