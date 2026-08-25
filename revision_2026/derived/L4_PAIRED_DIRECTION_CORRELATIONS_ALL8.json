@@ -1,0 +1,80 @@
+{
+  "analysis_id": "L4_PAIRED_DIRECTION_CORRELATIONS_ALL8_v1",
+  "source": "DERIVED/UNIFIED_SEED_LEVEL_RESULTS.csv",
+  "scope": "Layer-4 F2C-vs-C2F Pearson correlation across the six matched seeds, separately for each architecture x prespecified PE family.",
+  "interpretation": "Descriptive post-analysis diagnostic. Correlation structure may reflect paired-seed nuisance variation and is not evidence of a PE-specific mechanism.",
+  "rows": [
+    {
+      "architecture": "ViT-B",
+      "experiment": "E2C_VITB_CONTROLLED_2X2",
+      "pe_type": "learned",
+      "n": 6,
+      "pearson_r": 0.12007865169296542,
+      "two_sided_p": 0.820747722450859,
+      "status": "DESCRIPTIVE_POST_ANALYSIS"
+    },
+    {
+      "architecture": "ViT-B",
+      "experiment": "E2C_VITB_CONTROLLED_2X2",
+      "pe_type": "sinusoidal",
+      "n": 6,
+      "pearson_r": 0.9446342929881723,
+      "two_sided_p": 0.004513184315674528,
+      "status": "DESCRIPTIVE_POST_ANALYSIS"
+    },
+    {
+      "architecture": "ViT-B",
+      "experiment": "E2C_VITB_CONTROLLED_2X2",
+      "pe_type": "rope",
+      "n": 6,
+      "pearson_r": 0.22847198238198288,
+      "two_sided_p": 0.6632550819642543,
+      "status": "DESCRIPTIVE_POST_ANALYSIS"
+    },
+    {
+      "architecture": "ViT-B",
+      "experiment": "E2C_VITB_CONTROLLED_2X2",
+      "pe_type": "alibi",
+      "n": 6,
+      "pearson_r": 0.0808581655101944,
+      "two_sided_p": 0.8789770788133687,
+      "status": "DESCRIPTIVE_POST_ANALYSIS"
+    },
+    {
+      "architecture": "ViT-S",
+      "experiment": "E6_VITS_CONTROLLED_2X2",
+      "pe_type": "learned",
+      "n": 6,
+      "pearson_r": 0.3735608237634434,
+      "two_sided_p": 0.46572353919289,
+      "status": "DESCRIPTIVE_POST_ANALYSIS"
+    },
+    {
+      "architecture": "ViT-S",
+      "experiment": "E6_VITS_CONTROLLED_2X2",
+      "pe_type": "sinusoidal",
+      "n": 6,
+      "pearson_r": 0.4387574402694487,
+      "two_sided_p": 0.38409601830093826,
+      "status": "DESCRIPTIVE_POST_ANALYSIS"
+    },
+    {
+      "architecture": "ViT-S",
+      "experiment": "E6_VITS_CONTROLLED_2X2",
+      "pe_type": "rope",
+      "n": 6,
+      "pearson_r": -0.9472646492144179,
+      "two_sided_p": 0.004098196874333522,
+      "status": "DESCRIPTIVE_POST_ANALYSIS"
+    },
+    {
+      "architecture": "ViT-S",
+      "experiment": "E6_VITS_CONTROLLED_2X2",
+      "pe_type": "alibi",
+      "n": 6,
+      "pearson_r": 0.2908485074902151,
+      "two_sided_p": 0.5760290914747738,
+      "status": "DESCRIPTIVE_POST_ANALYSIS"
+    }
+  ]
+}
