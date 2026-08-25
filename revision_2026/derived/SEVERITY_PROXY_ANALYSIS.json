@@ -1,0 +1,70 @@
+{
+  "analysis_id": "SEVERITY_PROXY_ANALYSIS_v1",
+  "definition": "sev_diff=(NN-NC accuracy drop) - (CC-CN accuracy drop); compare with L4 Delta_asym",
+  "architectures": {
+    "ViT-B": {
+      "pearson": {
+        "r": -0.11738605450574038,
+        "p": 0.5848824227314592
+      },
+      "spearman": {
+        "rho": -0.1452173913043478,
+        "p": 0.49837946924561144
+      },
+      "within_family_centered_pearson": {
+        "r": 0.15081547309719323,
+        "p": 0.4817819384962731
+      },
+      "family_means": {
+        "learned": {
+          "severity_difference_pp": -5.661666666666666,
+          "L4_Delta_asym": -0.2736480816666667
+        },
+        "sinusoidal": {
+          "severity_difference_pp": 7.828333333333336,
+          "L4_Delta_asym": -0.2637089208333333
+        },
+        "rope": {
+          "severity_difference_pp": -2.6849999999999987,
+          "L4_Delta_asym": -0.271247005
+        },
+        "alibi": {
+          "severity_difference_pp": -6.720000000000003,
+          "L4_Delta_asym": -0.20122949249999997
+        }
+      }
+    },
+    "ViT-S": {
+      "pearson": {
+        "r": 0.16973009513728174,
+        "p": 0.42783968086551266
+      },
+      "spearman": {
+        "rho": 0.37652173913043474,
+        "p": 0.06975342004393094
+      },
+      "within_family_centered_pearson": {
+        "r": 0.23331925637055992,
+        "p": 0.2725370659730231
+      },
+      "family_means": {
+        "learned": {
+          "severity_difference_pp": -4.741666666666667,
+          "L4_Delta_asym": -0.19443811916666665
+        },
+        "sinusoidal": {
+          "severity_difference_pp": 8.481666666666667,
+          "L4_Delta_asym": -0.15855920333333332
+        },
+        "rope": {
+          "severity_difference_pp": -0.14500000000000077,
+          "L4_Delta_asym": 0.06592370166666665
+        },
+        "alibi": {
+          "severity_difference_pp": -4.990000000000001,
+          "L4_Delta_asym": -0.22182377583333326
+        }
+      }
+    }
+  }
+}

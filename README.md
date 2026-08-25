@@ -1,201 +1,268 @@
-# Scale, Resolution, and Reliability: A Comparative Information-Theoretic Analysis of Positional Encodings in Vision Transformers
+# Resolution Sensitivity of Attention-Entropy OOD Detection in Vision Transformers: A Controlled Bidirectional Analysis
 
-[![DOI](https://zenodo.org/badge/1190775611.svg)](https://doi.org/10.5281/zenodo.19386421)
-
+> Pattern Recognition manuscript **PR-D-26-04876**, major-revision evidence snapshot: **2026-08-25**.
 
 ## Overview
 
-This repository contains the code, links to trained model weights and experimental logs for our paper submitted to **Pattern Recognition** (Elsevier).
+This repository accompanies our revised study of **attention entropy as a training-free internal out-of-distribution (OOD) monitoring signal in Vision Transformers (ViTs)**.
 
-We present a comprehensive information-theoretic framework for comparing four positional encoding (PE) strategies in Vision Transformers: **Learned**, **Sinusoidal**, **RoPE**, and **ALiBi**. Unlike prior work that evaluates PE strategies solely through classification accuracy, we deploy layer-wise Mutual Information, Shannon entropy, a Spatial Decodability Protocol, and CKA representation similarity analysis across 24 independently trained ViT-Base models on ImageNet-100 and CIFAR-100.
+The revision studies four prespecified positional-encoding (PE) families — **Learned, Sinusoidal, RoPE, and ALiBi** — with **six seeds per PE family**. Rather than asking which PE is globally “best,” the revised paper asks a narrower reliability question:
 
-### Key Findings
+> **When does attention entropy provide a transferable OOD signal, and when does its score direction or magnitude depend on the shift construction, network depth, PE family, or model scale?**
 
-- **Layer 4** is a consistent zero-shot OOD detection checkpoint (AUROC up to 0.989)
-- A **resolution asymmetry** bounds attention-based OOD detection: reliable only when the target domain is coarser than training data
-- **Relative PE** (RoPE, ALiBi) provides superior structural reliability over absolute encodings
-- The **Orthogonality Trap** — validated via CKA — identifies a failure mode where positional and semantic streams remain non-interacting (Sinusoidal PE)
-- **Spatial builders** (RoPE, ALiBi) construct emergent spatial representations, while **spatial conservators** (Sinusoidal) preserve static positional codes
+The revised central evidence consists of four linked experiments:
 
----
+| Experiment | Architecture | Design | Main purpose |
+|---|---|---|---|
+| **E1** | ViT-B | Native ImageNet-100 ↔ CIFAR-100 | Establish the native bidirectional OOD phenomenon |
+| **E2-C** | ViT-B | Controlled CIFAR-100 native/coarse 2×2 | Test whether the native direction persists when semantics and final input geometry are controlled |
+| **E3** | ViT-B | Same E1/E2-C samples and checkpoints | Compare attention entropy with MSP and Energy |
+| **E6** | ViT-S | Controlled CIFAR-100 native/coarse 2×2 | Test transfer across conventional ViT model scale |
 
-## Main Results
+All central cohorts use seeds:
 
-### Classification Accuracy (Top-1 %)
+`{42, 123, 456, 789, 1011, 1213}`
 
-| PE Strategy | ImageNet-100 | CIFAR-100 |
-|-------------|-------------|-----------|
-| Learned | 79.4 ± 0.5 | 68.3 ± 0.3 |
-| Sinusoidal | 81.5 ± 0.3 | 66.9 ± 0.4 |
-| **RoPE** | **84.5 ± 0.3** | **73.3 ± 0.2** |
-| ALiBi | 81.1 ± 0.3 | 67.7 ± 0.4 |
+## Main findings of the major revision
 
-### OOD Detection (Direction A: IN-100 → C-100)
+### 1. Native cross-domain attention entropy is strongly directional
 
-| PE Strategy | AUROC_mid | Best Layer (Peak AUROC) |
-|-------------|-----------|------------------------|
-| Learned | 0.841 ± 0.017 | L4 (0.949) |
-| Sinusoidal | 0.879 ± 0.013 | L4 (0.971) |
-| **RoPE** | **0.947 ± 0.002** | **L4 (0.989)** |
-| ALiBi | 0.884 ± 0.010 | L4 (0.941) |
+At the prespecified Layer-4 endpoint in E1, the equal-weight mean across the four PE families gives a native directional AUROC gap of:
 
-### CKA(L1, L12) — Orthogonality Trap Indicator
+**Δ_native = +0.414**
+95% CI **[+0.402, +0.426]**
 
-| PE Strategy | CKA(L1, L12) | Interpretation |
-|-------------|-------------|----------------|
-| **Sinusoidal** | **0.974 ± 0.002** | Least transformation (Orthogonality Trap) |
-| ALiBi | 0.949 ± 0.005 | Moderate |
-| Learned | 0.938 ± 0.009 | Active transformation |
-| RoPE | 0.929 ± 0.018 | Most transformation (spatial builder) |
+This native comparison is intentionally treated as **confounded**: ImageNet-100 and CIFAR-100 differ in semantics, image statistics, native resolution, training distribution, and preprocessing.
 
----
+### 2. The controlled CIFAR-100 experiment reverses the direction
 
-## 🛠️ Reproduction Steps (Google Colab)
+E2-C uses the same CIFAR-100 semantic dataset and identical final 32×32 input / 8×8 patch-grid geometry in both directions. The controlled intervention is:
 
-To reproduce the results presented in the paper, we recommend using **Google Colab**.
-> [!IMPORTANT]
-> **Note on Local Execution**
-> This repository is optimized for Google Colab. The scripts contain hardcoded absolute paths. To run this project locally, you must perform a search for these paths and update all directory-related variables to match your local environment.
+- **native:** original 32×32 CIFAR-100
+- **coarse:** 32→16→32 using bilinear interpolation with antialiasing
+- **F→C:** native-trained model evaluated on coarse inputs
+- **C→F:** coarse-trained model evaluated on native inputs
 
----
+At Layer 4 in ViT-B:
 
-### **Step 1 --- Google Drive Preparation**
-*   Create a folder named `pe_experiment` in your root Google Drive directory.
-*   **Final Path on Drive:** `/My Drive/pe_experiment/`
-*   **Note:** In Colab, the full path will be: `/content/drive/MyDrive/pe_experiment/`
+**Δ_asym = AUROC(F→C) − AUROC(C→F) = −0.252**
+95% CI **[−0.279, −0.226]**
 
----
+All **24/24 PE×seed cells are negative**.
 
-### **Step 2 --- Data Setup & Structure**
+This falsifies the prespecified positive-direction hypothesis and shows that the E1 native asymmetry is **not a universal resolution law**.
 
-⚠️ **IMPORTANT:** The folder structure must be identical to the diagram below. All script paths are hardcoded.
+### 3. Attention entropy is not reducible to standard output confidence
 
-1.  **From GitHub:** Download the repository and copy the following files into the root folder `/pe_experiment/`:
-    *   The `table1_scripts` folder (including all 14 scripts).
-    *   Python scripts: `00_setup_imagenet.py`, `full_scale_experiment.py` and `cka_colab_trap.py`.
-    *   Text files: `imagenet100_classes.txt` and `val_labels.txt`.
-    *   The Colab notebook: `reproduce_paper_results.ipynb` and `cka_colab_notebook.ipynb`.
+On the exact same samples and checkpoints:
 
-2.  **ImageNet Dataset Acquisition:** Create a folder named `imagenet` within `/pe_experiment/`. 
-    *   ImageNet requires registration. Go to image-net.org and register with an academic email. Once approved, you will receive an email with a unique download link. Use it to download the ILSVRC2012_img_val.tar archive (~6.3 GB).
-    *   Place the archive inside /imagenet/. **Do NOT extract the archive.** The Colab script will handle the extraction automatically.
+| Score | E1 native directional gap | E2-C controlled Δ |
+|---|---:|---:|
+| **Attention entropy** | +0.414 | −0.252 |
+| **MSP** | +0.118 | +0.058 |
+| **Energy** | +0.088 | −0.019 |
 
----
+MSP does not mirror the controlled reversal. Energy weakly mirrors its sign, but at much smaller magnitude.
 
-### 📥 Download Trained Model Weights
-1. **[ImageNet-100 Models](https://drive.google.com/drive/folders/1gPwVSE0qctWVeaGwCv3eGQdQR4IK6Xds?usp=sharing)**
-2. **[CIFAR-100 Models](https://drive.google.com/drive/folders/16pEAbdH4aRpw-3s2vm4TbMey1GPQn2FQ?usp=sharing)**
+This is a diagnostic comparison, **not** a claim that attention entropy is universally superior to feature-space or hybrid OOD methods.
 
-> [!IMPORTANT]
-> **Instruction:** Select all -> **"Make a copy"** -> Move copies to `/pe_experiment/results/` (or `results_cifar100/`). Ensure that each model's individual   **subdirectory** is preserved and contains both `best_model.pth` and `training_history.json`.
+### 4. Depth and score orientation matter
 
-    *   ⚠️ Note: The folder /pe_experiment/results/ must also contain the two shared analysis files: adversarial_pe_results.json and analysis_data.json (see the diagram).
-    *   ⚠️ Note: The folder /pe_experiment/results_cifar100/ must also contain the shared file: adversarial_pe_results_cifar100.json (see the diagram).
+The controlled effect is strongly layer-dependent. Layer 4 remains the primary endpoint and, after completion of the full layer analysis, is also the **only one of the 12 prespecified secondary layers with no AUROC<0.5 score-orientation inversions** across all tested PE×seed cells, both directions, and both ViT-B and ViT-S.
 
----
+Layer 2 has a larger absolute directional contrast, but much of that magnitude is associated with score inversion for Learned, Sinusoidal, and ALiBi. **RoPE is the reproducible early-layer exception**, with 0/6 F→C inversions at Layer 2 in both architectures.
 
-### **Step 3 --- Launch in Colab**
-*   Open the **`reproduce_paper_results.ipynb`** notebook from your Google Drive.
-*   **Runtime:** Go to **Runtime > Change runtime type** and select **GPU (H100 or A100)**.
-*   **Mount & Setup:** Run the **first cell (Cell 1)**. 
-    *   When the popup appears, click **"Connect to Google Drive"** to grant access.
-    *   **Note:** This cell will automatically mount your Drive and **copy all necessary scripts from your Drive into the Colab local environment (SSD)**.
+The specific Layer-2 inversion interpretation is secondary/post hoc and does not replace the Layer-4 primary endpoint.
 
----
+### 5. ViT-S preserves the pooled reverse effect, but not uniformly across PE families
 
-### **Step 4 --- Code Execution**
-*   **Starting from Cell 2:** Run the remaining cells one by one in the given order, from top to bottom.
-*   **Sequential Execution:** Ensure each cell finishes completely before starting the next one to maintain the correct data flow.
-*   **Automatic Saving:** The scripts will automatically create the **`/figures/`** and **`/table1/`** directories within **`/pe_experiment/results/`** and **save all generated outputs (figures and json files) directly into them.**
+Using the harmonized fixed-PE estimand in E6:
 
-   **For CKA validation of the Orthogonality Trap** run the cka_colab_notebook.ipynb.
+**ViT-S Layer-4 pooled Δ = −0.127**
+95% CI **[−0.175, −0.084]**
 
-### **Verification:**
-Once execution is complete, you can compare your generated outputs in /results/figures/ and /results/table1/ with the original study results provided in the original_paper_results/ folder for consistency.
+Learned, Sinusoidal, and ALiBi remain negative at the family level, whereas RoPE is heterogeneous.
 
----
+The **original broader random-PE pre-specified replication gate remains FAIL**. The harmonized fixed-PE result is a narrower post-audit estimand and is not presented as a retroactive gate pass.
 
-#### **STRUCTURE BEFORE REPRODUCTION**
+Across all 12 layers, the pooled ViT-B and ViT-S directional profiles remain strongly aligned:
+
+- Pearson **r = 0.933**
+- cosine similarity **= 0.940**
+
+## Interpretation boundary
+
+The revised paper supports the following scoped conclusion:
+
+> **Attention-entropy OOD discriminability is structured but not universal: it depends on shift direction and construction, network depth, PE family, and architecture scale.**
+
+The fixed-PE pooled analyses apply to the **four prespecified PE mechanisms studied here** and do not statistically generalize to unseen PE families.
+
+The revised paper does **not** claim:
+
+- a universal resolution-asymmetry law;
+- a global ranking of PE families;
+- universal superiority of RoPE or relative PE;
+- that attention entropy replaces standard OOD detectors;
+- safety-critical reliability without deployment-specific validation;
+- architecture universality beyond the tested ViT-B and ViT-S settings.
+
+## Revision-specific repository layout
+
+The revision materials are organized under `revision_2026/`.
+
 ```text
-🗂️ /My Drive/pe_experiment/
-├──🗂️ table1_scripts/              # (14 scripts)
-├──🗂️ imagenet/
-│   └── ILSVRC2012_img_val.tar     # (Keep archived!)
-├──🗂️ results/                     # ImageNet100 results
-│   ├──🗂️ alibi_seed42/
-│       ├── best_model.pth
-│       └── training history.json 
-│   ├──🗂️ alibi_seed123/
-│   ├──🗂️ alibi_seed456/
-│   ├──🗂️ learned_seed42/
-│   ├──🗂️ learned_seed123/
-│   ├──🗂️ learned_seed456/
-│   ├──🗂️ rope_seed42/
-│   ├──🗂️ rope_seed123/
-│   ├──🗂️ rope_seed456/
-│   ├──🗂️ sinusoidal42/
-│   ├──🗂️ sinusoidal123/
-│   ├──🗂️ sinusoidal456/
-│   ├── analysis_data.json
-│   └── adversarial_pe_results.json
-│
-│
-├──🗂️ results_cifar100/           # CIFAR100 results
-│   ├──🗂️ alibi_seed42/
-│       ├── best_model.pth
-│       └── training history.json 
-│   ├──🗂️ alibi_seed123/
-│   ├──🗂️ alibi_seed456/
-│   ├──🗂️ learned_seed42/
-│   ├──🗂️ learned_seed123/
-│   ├──🗂️ learned_seed456/
-│   ├──🗂️ rope_seed42/
-│   ├──🗂️ rope_seed123/
-│   ├──🗂️ rope_seed456/
-│   ├──🗂️ sinusoidal42/
-│   ├──🗂️ sinusoidal123/
-│   ├──🗂️ sinusoidal456/
-│   └── adversarial_pe_results_cifar100.json
-│    
-├── imagenet100_classes.txt
-├── val_labels.txt
-├── cka_orthogonality_trap.py
-├── cka_colab_notebook.ipynb        
-├── 00_setup_imagenet.py
-├── full_scale_experiment.py
-└── reproduce_paper_results.ipynb
+revision_2026/
+├── README.md
+├── derived/
+│   ├── MASTER_EXPERIMENT_SUMMARY.json
+│   ├── MASTER_NUMBER_LEDGER.csv
+│   ├── MASTER_CLAIM_LEDGER.csv
+│   ├── MASTER_GATE_LEDGER.json
+│   ├── HARMONIZED_FIXED_PE_L4_ANALYSIS.json
+│   ├── L2_SECONDARY_ANALYSIS.json
+│   ├── LAYER_SCORE_ORIENTATION_AUDIT.csv
+│   ├── SEVERITY_PROXY_ANALYSIS.json
+│   ├── BASELINE_INTERPRETATION_v2.json
+│   └── CROSS_ARCHITECTURE_LAYER_PROFILE_COMPARISON_v2.json
+├── policies/
+│   ├── ESTIMAND_POLICY_v1.0.md
+│   └── LAYER_STATUS_POLICY_v1.0.md
+├── analysis/
+│   └── recompute_harmonized_analysis_v1.py
+├── models/
+│   ├── README.md
+│   └── MODEL_CHECKPOINT_MANIFEST.csv
+├── runtimes/
+│   └── RUNTIME_PACKAGES_MANIFEST.csv
+├── replication/
+│   └── README.md
+└── checksums/
+    └── REVISION_SHA256.txt
 ```
----
 
-## Model Architecture
+The complete audited evidence bundle is:
 
-All models use ViT-Base configuration:
+`PR_MAJOR_REVISION_REPLICATION_v0.3.2.zip`
 
-| Parameter | Value |
-|-----------|-------|
-| Embedding dimension | 768 |
-| Transformer layers | 12 |
-| Attention heads | 12 |
-| MLP ratio | 4.0 |
-| Dropout | 0.1 |
-| Patch size (ImageNet-100) | 16×16 (196 patches) |
-| Patch size (CIFAR-100) | 4×4 (64 patches) |
+SHA-256:
 
-## Training Configuration
+`74801b899972af7f4f9ea550dad7daf6564af2b05d6deb7358826eb1d75640a2`
 
-| Parameter | Value |
-|-----------|-------|
-| Optimiser | AdamW |
-| Learning rate | 3×10⁻⁴ |
-| Weight decay | 0.1 |
-| Schedule | Cosine with 20-epoch warmup |
-| Batch size | 128 |
-| Epochs | 300 |
-| Label smoothing | 0.1 |
-| MixUp α | 0.8 |
-| CutMix α | 1.0 |
-| Seeds | {42, 123, 456} |
+Because this archive is about 92 MB and sits close to GitHub's per-file size limit, the recommended public location for the full immutable bundle is **Zenodo**, while the lightweight summary/derived files above remain directly browsable in GitHub.
 
----
+## Model checkpoints
 
+The central revision uses **120 distinct `best_model.pth` checkpoints**:
 
+| Cohort | Count |
+|---|---:|
+| ViT-B, ImageNet-100, native training | 24 |
+| ViT-B, CIFAR-100, native training | 24 |
+| ViT-B, CIFAR-100, coarse training | 24 |
+| ViT-S, CIFAR-100, native training | 24 |
+| ViT-S, CIFAR-100, coarse training | 24 |
+| **Total** | **120** |
+
+Each cohort contains:
+
+`4 PE families × 6 seeds = 24 checkpoints`
+
+### Public checkpoint locations
+
+- **ViT-B / ImageNet-100 / native (24):** https://drive.google.com/drive/folders/1QH3EG9mf6oSWwzwrhdp599S5VB_hShZx
+- **ViT-B / CIFAR-100 / native (24):** https://drive.google.com/drive/folders/1pPgYxOtHfBRwvuSPKCwSzbynNN65tSv7
+- **ViT-B / CIFAR-100 / coarse + ViT-S / CIFAR-100 / native+coarse (72):** https://drive.google.com/drive/folders/1amyzkeeN2MxWiDm9mR7dA2llxsFCgS2m
+
+The file `revision_2026/models/MODEL_CHECKPOINT_MANIFEST.csv` is the authoritative index. It records architecture, dataset, training condition, PE family, seed, relative path, SHA-256 for all 120 central checkpoints, and public location.
+
+All **120/120 central checkpoint SHA-256 hashes and public locations are populated and verified**. The 48 native ViT-B checkpoints were hash-verified against the existing public Drive cohorts; the 72 revision-specific ViT-B coarse / ViT-S native+coarse checkpoints were hash-verified from FMLE export → USB selection → public Drive copy.
+
+## Full replication archive / Zenodo
+
+### Stable Zenodo concept DOI
+
+**https://doi.org/10.5281/zenodo.19386421**
+
+This Concept DOI represents all archived releases and resolves to the latest Zenodo version. The GitHub `v2.0.0` release is the major-revision release associated with the revised manuscript.
+
+Recommended immutable asset:
+
+`PR_MAJOR_REVISION_REPLICATION_v0.3.2.zip`
+
+The archive includes raw/derived E1, E2-C, E3, and E6 outputs; exact runtime packages; manifests; checksums; audit records; estimand/layer policies; and lineage information.
+
+### Zenodo version history
+
+Earlier Zenodo versions under the same Concept DOI preserve the original-submission provenance. Version-specific DOIs remain immutable; the Concept DOI above is the stable citation target for the evolving software record.
+
+## Reproducing the revised evidence
+
+There are three levels of reproduction.
+
+### A. Verify the reported manuscript numbers
+
+Use the lightweight files under `revision_2026/derived/` together with:
+
+`revision_2026/analysis/recompute_harmonized_analysis_v1.py`
+
+The current single source of truth for manuscript-facing numbers is the audited `PR_MAJOR_REVISION_REPLICATION_v0.3.2` package.
+
+### B. Re-run the evaluation/analysis pipelines
+
+Exact runtime packages are indexed in:
+
+`revision_2026/runtimes/RUNTIME_PACKAGES_MANIFEST.csv`
+
+The primary packages are:
+
+- E1 native OOD evaluation
+- E2-C controlled ViT-B training/evaluation
+- E3 MSP/Energy baseline evaluation
+- E6 ViT-S native/coarse training/evaluation
+
+Each package is checksum-locked.
+
+### C. Re-run training from scratch
+
+Training from scratch requires CIFAR-100 and the ImageNet-100 subset construction described in the paper. ImageNet data are not redistributed by this repository.
+
+The controlled CIFAR pipeline uses **MixUp (α=0.8)** and **does not use CutMix**.
+
+## Legacy original-submission materials
+
+The root-level scripts, `table1_scripts/`, `reproduce_paper_results.ipynb`, and `original_paper_results/` are retained for provenance of the initially submitted manuscript.
+
+They are **not** the source of truth for the major revision.
+
+In particular, the following original-submission interpretations have been superseded by the controlled revision experiments:
+
+- universal “resolution asymmetry”;
+- global superiority of relative PE;
+- “Orthogonality Trap” as a validated central construct;
+- “spatial builder / conservator” taxonomy as a main conclusion;
+- n=3 central OOD statistics.
+
+For the revised manuscript, use `revision_2026/` and the revision-specific model/archive links.
+
+## Citation
+
+The manuscript is currently under major revision at *Pattern Recognition*.
+
+**Manuscript:** PR-D-26-04876
+**Revised title:** *Resolution Sensitivity of Attention-Entropy OOD Detection in Vision Transformers: A Controlled Bidirectional Analysis*
+
+For the software/replication record, cite the stable Zenodo Concept DOI: `10.5281/zenodo.19386421`. A journal-article citation should be added after publication.
+
+## Authors
+
+1. Djoko Bandjur
+2. Milos Bandjur
+3. Aleksandar Micic — ORCID: https://orcid.org/0000-0001-8606-3528
+4. Branimir Jaksic
+
+## Contact
+
+Corresponding author: djoko.bandjur@pr.ac.rs
+
+For questions about the released revision artifacts, please use the repository issue tracker or contact the corresponding author.

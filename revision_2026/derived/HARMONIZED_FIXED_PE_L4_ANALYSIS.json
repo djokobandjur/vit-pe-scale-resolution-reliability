@@ -1,0 +1,156 @@
+{
+  "analysis_id": "HARMONIZED_FIXED_PE_L4_v1",
+  "status": "POST_AUDIT_ESTIMAND_HARMONIZATION",
+  "primary_layer": "L4",
+  "PE_families": [
+    "learned",
+    "sinusoidal",
+    "rope",
+    "alibi"
+  ],
+  "seeds": [
+    42,
+    123,
+    456,
+    789,
+    1011,
+    1213
+  ],
+  "bootstrap_resamples": 200000,
+  "rng_seed": 20260824,
+  "note": "Does not overwrite the original E6 prelocked random-PE replication gate, which remains FAIL.",
+  "ViT_B": {
+    "F2C": {
+      "mean": 0.6268556639583333,
+      "ci95": [
+        0.60794734240625,
+        0.6474923828958333
+      ],
+      "bootstrap_resamples": 200000,
+      "rng_seed": 20260824,
+      "estimand": "equal-weight mean across four fixed prespecified PE families; seeds resampled within family"
+    },
+    "C2F": {
+      "mean": 0.8793140389583334,
+      "ci95": [
+        0.8576095489791666,
+        0.89937472728125
+      ],
+      "bootstrap_resamples": 200000,
+      "rng_seed": 20260824,
+      "estimand": "equal-weight mean across four fixed prespecified PE families; seeds resampled within family"
+    },
+    "DELTA": {
+      "mean": -0.25245837499999996,
+      "ci95": [
+        -0.2791541477239583,
+        -0.22608765342708328
+      ],
+      "bootstrap_resamples": 200000,
+      "rng_seed": 20260824,
+      "estimand": "equal-weight mean across four fixed prespecified PE families; seeds resampled within family"
+    }
+  },
+  "ViT_S": {
+    "F2C": {
+      "mean": 0.7153953470833333,
+      "ci95": [
+        0.6877060417447917,
+        0.7422676642343751
+      ],
+      "bootstrap_resamples": 200000,
+      "rng_seed": 20260824,
+      "estimand": "equal-weight mean across four fixed prespecified PE families; seeds resampled within family"
+    },
+    "C2F": {
+      "mean": 0.84261969625,
+      "ci95": [
+        0.8182312819687501,
+        0.8689642827135416
+      ],
+      "bootstrap_resamples": 200000,
+      "rng_seed": 20260824,
+      "estimand": "equal-weight mean across four fixed prespecified PE families; seeds resampled within family"
+    },
+    "DELTA": {
+      "mean": -0.12722434916666667,
+      "ci95": [
+        -0.175268171140625,
+        -0.08432982929166667
+      ],
+      "bootstrap_resamples": 200000,
+      "rng_seed": 20260824,
+      "estimand": "equal-weight mean across four fixed prespecified PE families; seeds resampled within family"
+    }
+  },
+  "architecture_difference_ViTS_minus_ViTB": {
+    "F2C": {
+      "mean": 0.088539683125,
+      "ci95": [
+        0.04793248347395834,
+        0.126327068671875
+      ],
+      "bootstrap_resamples": 200000,
+      "paired_by": "PE family and seed"
+    },
+    "C2F": {
+      "mean": -0.036694342708333307,
+      "ci95": [
+        -0.06857464564062497,
+        -0.0043743632812499765
+      ],
+      "bootstrap_resamples": 200000,
+      "paired_by": "PE family and seed"
+    },
+    "DELTA": {
+      "mean": 0.12523402583333332,
+      "ci95": [
+        0.06632844994270831,
+        0.17913336125000004
+      ],
+      "bootstrap_resamples": 200000,
+      "paired_by": "PE family and seed"
+    }
+  },
+  "original_prelocked_random_PE_E6": {
+    "pooled_attention_delta": {
+      "mean": -0.12722434916666667,
+      "ci95": [
+        -0.215993891203125,
+        0.007174656072916662
+      ],
+      "n_pe": 4,
+      "n_seed_per_pe": 6
+    },
+    "replication_gate": {
+      "A_pooled_CI_upper_lt_0": false,
+      "B_at_least_3of4_PE_means_negative": true,
+      "C_no_PE_CI_entirely_positive": true,
+      "PASS": false,
+      "negative_PE_means": 3,
+      "PE_CIs_entirely_negative": 3
+    }
+  },
+  "independent_audit_crosscheck": {
+    "audit_file": "AUDITS/AUDIT_REPORT_2026-08-24.md",
+    "method": "Independent per-image AUROC reimplementation and image+seed hierarchical bootstrap, 2000 replicates.",
+    "reported_fixed_PE_ViTB_L4_CI": [
+      -0.2804,
+      -0.2262
+    ],
+    "reported_fixed_PE_ViTS_L4_CI": [
+      -0.1751,
+      -0.085
+    ],
+    "reported_fixed_PE_architecture_delta_CI": [
+      0.0665,
+      0.1785
+    ]
+  },
+  "decision": {
+    "original_prelocked_random_PE_gate": "FAIL",
+    "harmonized_fixed_PE_ViTS_L4_zero_exclusion": true,
+    "harmonized_fixed_PE_architecture_difference_zero_exclusion": true,
+    "manuscript_wording": "Reverse L4 asymmetry is supported in the equal-weight average over the four prespecified PE families, but is not uniform across families; the original random-PE prelocked E6 replication gate remains failed."
+  }
+}

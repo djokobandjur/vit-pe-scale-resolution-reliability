@@ -1,0 +1,306 @@
+{
+  "package_id": "PR_MAJOR_REVISION_REPLICATION_v0.3.2",
+  "created": "2026-08-24",
+  "scope": "Consolidated evidence snapshot after E1, E2-C, E3, E6 and independent post-audit estimand harmonization.",
+  "experiments": {
+    "E1": {
+      "name": "Native cross-domain attention-entropy OOD",
+      "architecture": "ViT-B",
+      "n_records": 48,
+      "validation": "PASS",
+      "headline": {
+        "Attention_L4_IN100_to_CIFAR100_means": {
+          "learned": 0.9385248183333333,
+          "sinusoidal": 0.9456700233333333,
+          "rope": 0.9810892000000001,
+          "alibi": 0.9372496149999999
+        },
+        "Attention_L4_CIFAR100_to_IN100_means": {
+          "learned": 0.5393277816666667,
+          "sinusoidal": 0.555797215,
+          "rope": 0.5104013666666667,
+          "alibi": 0.53985452
+        },
+        "pooled_attention_directional_gap": {
+          "mean": 0.41428819333333333,
+          "ci95": [
+            0.40194311122916665,
+            0.4257888144375
+          ]
+        }
+      },
+      "interpretation": "Strong native directional asymmetry, but E1 alone is confounded by dataset/semantic/resolution differences."
+    },
+    "E2C": {
+      "name": "Controlled CIFAR-100 native/coarse 2x2",
+      "architecture": "ViT-B",
+      "n_records": 24,
+      "validation": "PASS",
+      "headline": {
+        "family_delta_L4": {
+          "learned": {
+            "observed_mean_delta": -0.2736480816666667,
+            "two_sided_95ci": [
+              -0.3087652339791666,
+              -0.24791097699999995
+            ]
+          },
+          "sinusoidal": {
+            "observed_mean_delta": -0.2637089208333333,
+            "two_sided_95ci": [
+              -0.273723331375,
+              -0.2527931054166667
+            ]
+          },
+          "rope": {
+            "observed_mean_delta": -0.271247005,
+            "two_sided_95ci": [
+              -0.33275787964583325,
+              -0.21693901408333335
+            ]
+          },
+          "alibi": {
+            "observed_mean_delta": -0.2012294925,
+            "two_sided_95ci": [
+              -0.2860542212916667,
+              -0.11774491008333332
+            ]
+          }
+        },
+        "pooled": {
+          "observed_equal_weight_family_mean_delta": -0.252458375,
+          "two_sided_95ci": [
+            -0.2804337252708333,
+            -0.22601137906770835
+          ]
+        },
+        "scientific_outcome": "REVERSE_ASYMMETRY"
+      },
+      "interpretation": "Original positive-direction hypothesis was falsified; a strong reverse asymmetry is the observed controlled outcome."
+    },
+    "E3": {
+      "name": "MSP and Energy output-space baselines",
+      "architecture": "ViT-B contexts from E1/E2-C",
+      "validation": "PASS",
+      "headline": {
+        "E1_pooled_directional_gap": {
+          "Attention": {
+            "mean": 0.41428819333333333,
+            "ci95": [
+              0.40194311122916665,
+              0.4257888144375
+            ]
+          },
+          "MSP": {
+            "mean": 0.11807390166666666,
+            "ci95": [
+              0.11627096958333334,
+              0.11987394708333332
+            ]
+          },
+          "Energy": {
+            "mean": 0.08799469166666664,
+            "ci95": [
+              0.08518787738541664,
+              0.09085042678124998
+            ]
+          }
+        },
+        "E2C_pooled_delta": {
+          "Attention": {
+            "mean": -0.252458375,
+            "ci95": [
+              -0.27913660855208333,
+              -0.22632084889062506
+            ]
+          },
+          "MSP": {
+            "mean": 0.05774859104166667,
+            "ci95": [
+              0.04088248823958331,
+              0.07326131128645832
+            ]
+          },
+          "Energy": {
+            "mean": -0.019270816041666684,
+            "ci95": [
+              -0.039650681979166665,
+              -0.0012245835520833684
+            ]
+          }
+        }
+      },
+      "interpretation": "Attention entropy is behaviorally distinct from output confidence; not a universal superiority claim."
+    },
+    "E6": {
+      "name": "Controlled ViT-S cross-architecture replication",
+      "architecture": "ViT-S",
+      "n_seed_records": 24,
+      "n_layer_records": 288,
+      "validation": "PASS",
+      "headline": {
+        "family_attention_delta": {
+          "learned": {
+            "mean": -0.19443811916666667,
+            "sd": 0.05266388121641023,
+            "ci95": [
+              -0.23198776500000004,
+              -0.15688847333333333
+            ],
+            "n": 6
+          },
+          "sinusoidal": {
+            "mean": -0.15855920333333334,
+            "sd": 0.05423926278899661,
+            "ci95": [
+              -0.1935703733333334,
+              -0.1154745225
+            ],
+            "n": 6
+          },
+          "rope": {
+            "mean": 0.06592370166666665,
+            "sd": 0.22973869410625172,
+            "ci95": [
+              -0.10567734333333344,
+              0.2235302708333334
+            ],
+            "n": 6
+          },
+          "alibi": {
+            "mean": -0.22182377583333332,
+            "sd": 0.06762216296803086,
+            "ci95": [
+              -0.2698942816666667,
+              -0.1724737666666666
+            ],
+            "n": 6
+          }
+        },
+        "pooled_attention_delta": {
+          "mean": -0.12722434916666667,
+          "ci95": [
+            -0.215993891203125,
+            0.007174656072916662
+          ],
+          "n_pe": 4,
+          "n_seed_per_pe": 6
+        },
+        "replication_gate": {
+          "A_pooled_CI_upper_lt_0": false,
+          "B_at_least_3of4_PE_means_negative": true,
+          "C_no_PE_CI_entirely_positive": true,
+          "PASS": false,
+          "negative_PE_means": 3,
+          "PE_CIs_entirely_negative": 3
+        },
+        "architecture_comparison": {
+          "definition": "ViT-S minus ViT-B, paired by identical PE x seed",
+          "Attention_Delta_difference": {
+            "mean": 0.12523402583333335,
+            "ci95": [
+              0.0021902919010416966,
+              0.27722009158333333
+            ],
+            "n_pe": 4,
+            "n_seed_per_pe": 6
+          },
+          "Attention_F2C_difference": {
+            "mean": 0.088539683125,
+            "ci95": [
+              0.02642358452604167,
+              0.15835712458333323
+            ],
+            "n_pe": 4,
+            "n_seed_per_pe": 6
+          },
+          "Attention_C2F_difference": {
+            "mean": -0.036694342708333334,
+            "ci95": [
+              -0.13349680541145836,
+              0.048461326869791564
+            ],
+            "n_pe": 4,
+            "n_seed_per_pe": 6
+          },
+          "sign_concordance": {
+            "ViTB_negative_cells": 24,
+            "ViTS_negative_cells": 20,
+            "same_sign_cells": 20,
+            "total_cells": 24
+          },
+          "MSP_Delta_difference": {
+            "mean": -0.04121195791666666,
+            "ci95": [
+              -0.10409580003124998,
+              0.020791951828124842
+            ],
+            "n_pe": 4,
+            "n_seed_per_pe": 6
+          },
+          "Energy_Delta_difference": {
+            "mean": -0.02756137791666662,
+            "ci95": [
+              -0.11025292857291662,
+              0.061482323416666616
+            ],
+            "n_pe": 4,
+            "n_seed_per_pe": 6
+          }
+        },
+        "pooled_layer_profile_pearson_r_vs_ViTB": 0.9332853176953138
+      },
+      "interpretation": "Partial PE-dependent transfer; confirmatory pooled replication fails narrowly, while layer-wise structure is strongly conserved descriptively."
+    }
+  },
+  "current_umbrella_claim": "Attention-entropy OOD discriminability is structured but not universal: it depends on direction, training/domain construction, layer depth, PE family, and architecture scale.",
+  "important_limitations": [
+    "The original E6 prelocked random-PE replication gate remains FAIL; harmonized fixed-PE inference is a transparent post-audit estimand correction, not a retroactive preregistration.",
+    "Fixed-PE inference applies to the four prespecified PE mechanisms and does not statistically generalize to unseen PE families.",
+    "L2 belongs to the prespecified secondary profile, but the specific sign-inversion pattern and interpretation were identified post hoc.",
+    "E1 RAW attention-entropy arrays were not supplied to the v0.3.0 consolidation; E1 DERIVED and its 48/48 validation record remain included."
+  ],
+  "post_audit_update": {
+    "audit": "AUDITS/AUDIT_REPORT_2026-08-24.md",
+    "estimand_policy": "POLICIES/ESTIMAND_POLICY_v1.0.md",
+    "layer_policy": "POLICIES/LAYER_STATUS_POLICY_v1.0.md",
+    "main_pooled_estimand": "equal-weight average over four fixed prespecified PE families",
+    "original_E6_random_PE_prelocked_gate": "FAIL_RETAINED",
+    "harmonized_fixed_PE_ViTS_L4": {
+      "mean": -0.12722434916666667,
+      "ci95": [
+        -0.175268171140625,
+        -0.08432982929166667
+      ],
+      "bootstrap_resamples": 200000,
+      "rng_seed": 20260824,
+      "estimand": "equal-weight mean across four fixed prespecified PE families; seeds resampled within family"
+    },
+    "harmonized_fixed_PE_ViTB_L4": {
+      "mean": -0.25245837499999996,
+      "ci95": [
+        -0.2791541477239583,
+        -0.22608765342708328
+      ],
+      "bootstrap_resamples": 200000,
+      "rng_seed": 20260824,
+      "estimand": "equal-weight mean across four fixed prespecified PE families; seeds resampled within family"
+    },
+    "paired_architecture_difference": {
+      "mean": 0.12523402583333332,
+      "ci95": [
+        0.06632844994270831,
+        0.17913336125000004
+      ],
+      "bootstrap_resamples": 200000,
+      "paired_by": "PE family and seed"
+    },
+    "L4_functional_status": "Primary; only layer among the 12 prespecified secondary layers with zero score-orientation inversions in both directions across both architectures.",
+    "L2_status": "Prespecified secondary profile layer; specific sign-inversion interpretation is post hoc.",
+    "profile_similarity": {
+      "pearson_r": 0.9332853176953138,
+      "cosine_similarity": 0.940057235291441
+    },
+    "severity_proxy": "Rejected quantitatively in both architectures."
+  }
+}

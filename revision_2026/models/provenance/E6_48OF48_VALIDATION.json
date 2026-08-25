@@ -1,0 +1,10 @@
+{
+  "protocol_id": "PR-E6-VITS-CIFAR-2X2-v1.0",
+  "status": "PASS",
+  "expected_runs": 48,
+  "observed_runs": 48,
+  "passed_runs": 48,
+  "failed_runs": 0,
+  "errors": [],
+  "model_source_sha256": "83fc337128dec7f896c9816842806789a634154dea8372bb0a43bae19188d3bf"
+}

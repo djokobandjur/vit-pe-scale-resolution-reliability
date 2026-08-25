@@ -1,0 +1,25 @@
+claim_id,claim,evidence,status,manuscript_action
+C1,Attention entropy shows strong direction dependence in native cross-domain OOD.,E1 + E3,KEEP_STRONG,Opening empirical phenomenon; do not infer resolution causality from E1 alone.
+C2,The E1 native asymmetry can be attributed to resolution alone.,E1 confounded; E2-C reverses sign,DELETE_REJECT,Do not use causal resolution-only language.
+C3,"Among the 12 prespecified secondary layers, L4 is the only layer with non-inverted higher-entropy=OOD orientation in both directions, all four PE families, and both architectures.",E2-C + E6 layer orientation audit,KEEP_STRONG_REWRITTEN,Replace old 'universally optimal L4' wording with this stronger but scoped functional score-orientation claim; uniqueness is post-analysis within the prespecified 12-layer profile.
+C4,RoPE uniquely preserves the expected F2C entropy-score orientation at L2 across both controlled architectures.,E2-C + E6 L2 + E1 early-layer evidence,KEEP_STRONG_STRUCTURAL,0/6 RoPE inversions at L2 in both architectures vs 6/6 for Learned/Sinusoidal/ALiBi; do not turn into global superiority claim.
+C5,Controlled ViT-B coarse/native 2x2 shows a strong reverse L4 directional asymmetry.,E2-C,KEEP_FLAGSHIP_NONCONFIRMATORY_DIRECTION,"Flagship observed result, but not confirmatory for the prelocked positive direction; prelocked gate was falsified."
+C6,Natural cross-dataset differences are not necessary for directional behavior to arise.,E2-C controlled CIFAR-100 design,KEEP_STRONG,Supports a resolution/training-condition-linked component; not 'resolution is the only cause'.
+C7,Directional attention asymmetry is merely a severity/accuracy-damage proxy.,E2-C + E6 severity analysis,REJECT_STRONG_QUANTITATIVE,Pearson/Spearman and within-family centered correlations do not support the proxy; Sinusoidal is a directional counterexample.
+C8,Attention entropy is only another classifier-confidence score.,E3,REJECT_REFINED,MSP does not mirror controlled reversal; Energy weakly mirrors the sign. Internal behavior remains distinct.
+C9,Attention entropy carries structured OOD information not reducible to standard output-space uncertainty.,E3 + layer/PE structure,KEEP_STRONG_REFINED,"Say distinct/structured, not universally better."
+C10,Attention entropy is universally superior to MSP/Energy.,E3,DELETE,No global superiority ranking.
+C11,Controlled reverse L4 asymmetry fully and uniformly replicates from ViT-B to ViT-S.,E6,DELETE_AS_UNIFORM_L4_CLAIM,"Harmonized fixed-PE pooled mean is negative, but RoPE is heterogeneous at L4; original random-PE prelocked gate remains FAIL."
+C12,"In ViT-S at L4, Learned, Sinusoidal and ALiBi are negative while RoPE is heterogeneous.",E6,KEEP_STRONG_DESCRIPTIVE,Three PE families 6/6 negative; RoPE 2/6 negative.
+C13,The equal-weight pooled ViT-S L4 effect across the four prespecified PE families is negative.,E6 harmonized fixed-PE analysis,KEEP_SUPPORTED_FIXED_PE,Fixed-PE CI excludes zero. Must be paired with explicit note that the original random-PE prelocked replication gate failed.
+C14,The magnitude of L4 directional asymmetry differs between ViT-S and ViT-B for the four prespecified PE families.,E6 paired cross-architecture fixed-PE analysis,KEEP_STRONG_FIXED_PE,Paired fixed-PE architecture-difference CI excludes zero; scope is these four PE mechanisms.
+C15,RoPE is the principal source of cross-architecture L4 heterogeneity.,E2-C vs E6,KEEP_NARROW_L4_SPECIFIC,Do not generalize to L2: RoPE L2 is negative 6/6 in ViT-S and preserves score orientation.
+C16,The 12-layer directional profile is strongly conserved between ViT-B and ViT-S.,E2-C + E6 secondary profile,KEEP_SECONDARY_QUANTIFIED,Pooled Pearson r and cosine similarity are reported as descriptive secondary summaries.
+C17,Directional behavior depends on layer depth.,E1 + E2-C + E6,KEEP_STRONG,Layer sign/orientation changes are central evidence.
+C18,Directional behavior is modulated by PE family.,E1 + E2-C + E6,KEEP_STRONG,Especially L2 orientation and L4 RoPE heterogeneity.
+C19,Directional behavior depends on training/domain construction condition.,E1 vs E2-C,KEEP_STRONG,"E1 pooled positive gap vs E2-C pooled negative delta is a sign reversal, not merely attenuation."
+C20,There is a universal resolution-asymmetry law for attention entropy.,E1 + E2-C + E6,DELETE,Later controls falsify a universal law.
+C21,"Attention entropy can be a useful training-free internal monitor, but reliability must be validated for the deployment regime.",E1-E3-E6,KEEP_PRACTICAL,Deployment conclusion should emphasize calibration/validation dependence.
+C22,Results provide an unconditional basis for reliable safety-critical deployment.,Current experiments,DELETE_NARROW,Replace with explicit limits and monitoring caveats.
+C23,PE families can be globally ranked by OOD reliability.,E1-E6,DELETE,Ranking changes with layer/direction/architecture.
+C24,Attention-entropy OOD discriminability is shaped by direction × training condition × layer × PE × architecture scale.,E1 + E2-C + E3 + E6,KEEP_UMBRELLA,"Organize Abstract, Results, and Discussion around conditional reliability rather than a universal asymmetry law."

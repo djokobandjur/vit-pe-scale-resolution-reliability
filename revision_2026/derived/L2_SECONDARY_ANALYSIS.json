@@ -1,0 +1,108 @@
+{
+  "analysis_id": "L2_SECONDARY_PROFILE_ANALYSIS_v1",
+  "status": "SECONDARY_PROFILE; SPECIFIC_SIGN_INVERSION_INTERPRETATION_POST_HOC",
+  "ViT_B": {
+    "pooled_fixed_PE": {
+      "mean": -0.5246385975,
+      "ci95": [
+        -0.5429484528958334,
+        -0.5077243795416666
+      ],
+      "bootstrap_resamples": 200000,
+      "rng_seed": 20260824,
+      "estimand": "equal-weight mean across four fixed prespecified PE families; seeds resampled within family"
+    },
+    "families": {
+      "learned": {
+        "mean": -0.6687925250000001,
+        "ci95": [
+          -0.6984720716666667,
+          -0.6417310925
+        ],
+        "negative_seed_cells": 6,
+        "n": 6
+      },
+      "sinusoidal": {
+        "mean": -0.7834365458333333,
+        "ci95": [
+          -0.8093598341666666,
+          -0.7622521316666667
+        ],
+        "negative_seed_cells": 6,
+        "n": 6
+      },
+      "rope": {
+        "mean": -0.16114058249999996,
+        "ci95": [
+          -0.22053892416666665,
+          -0.112209555
+        ],
+        "negative_seed_cells": 6,
+        "n": 6
+      },
+      "alibi": {
+        "mean": -0.4851847366666666,
+        "ci95": [
+          -0.5116765425,
+          -0.4579241466666666
+        ],
+        "negative_seed_cells": 6,
+        "n": 6
+      }
+    },
+    "negative_seed_cells_total": 24,
+    "total_seed_cells": 24
+  },
+  "ViT_S": {
+    "pooled_fixed_PE": {
+      "mean": -0.46612482916666664,
+      "ci95": [
+        -0.48386366946875,
+        -0.4482399036197917
+      ],
+      "bootstrap_resamples": 200000,
+      "rng_seed": 20260824,
+      "estimand": "equal-weight mean across four fixed prespecified PE families; seeds resampled within family"
+    },
+    "families": {
+      "learned": {
+        "mean": -0.5723296133333334,
+        "ci95": [
+          -0.6156331066666666,
+          -0.5302037291666667
+        ],
+        "negative_seed_cells": 6,
+        "n": 6
+      },
+      "sinusoidal": {
+        "mean": -0.7284835325,
+        "ci95": [
+          -0.7664598616666667,
+          -0.6854701750000002
+        ],
+        "negative_seed_cells": 6,
+        "n": 6
+      },
+      "rope": {
+        "mean": -0.08776036499999999,
+        "ci95": [
+          -0.12269603083333332,
+          -0.054858126666666625
+        ],
+        "negative_seed_cells": 6,
+        "n": 6
+      },
+      "alibi": {
+        "mean": -0.4759258058333334,
+        "ci95": [
+          -0.4954274450000001,
+          -0.45483713916666674
+        ],
+        "negative_seed_cells": 6,
+        "n": 6
+      }
+    },
+    "negative_seed_cells_total": 24,
+    "total_seed_cells": 24
+  }
+}

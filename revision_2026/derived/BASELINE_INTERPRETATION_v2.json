@@ -1,0 +1,32 @@
+{
+  "status": "DERIVED_FROM_VALIDATED_E3_REPORT",
+  "E2C_pooled_delta": {
+    "Attention": {
+      "mean": -0.252458375,
+      "ci95": [
+        -0.27913660855208333,
+        -0.22632084889062506
+      ]
+    },
+    "MSP": {
+      "mean": 0.05774859104166667,
+      "ci95": [
+        0.04088248823958331,
+        0.07326131128645832
+      ]
+    },
+    "Energy": {
+      "mean": -0.019270816041666684,
+      "ci95": [
+        -0.039650681979166665,
+        -0.0012245835520833684
+      ]
+    }
+  },
+  "E2C_reverse_mirror_classification": {
+    "MSP": false,
+    "Energy": true
+  },
+  "classification": null,
+  "recommended_wording": "MSP does not mirror the controlled reversal. Energy mirrors its sign weakly, but neither reproduces the magnitude and internal PE/layer structure of the attention-entropy effect."
+}

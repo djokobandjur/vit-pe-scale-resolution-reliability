@@ -1,0 +1,35 @@
+{
+  "analysis_id": "REVIEWER_RESERVE_VITS_BASELINES_FIXED_PE_v1",
+  "status": "REVIEWER_RESERVE_NOT_MAIN_MANUSCRIPT_INFERENCE",
+  "estimand": "equal-weight mean across four fixed prespecified PE families; seeds resampled within family",
+  "bootstrap_resamples": 200000,
+  "rng_seed": 20260824,
+  "shared_bootstrap_indices_across_metrics": true,
+  "metrics": {
+    "Attention": {
+      "mean": -0.12722434916666667,
+      "ci95": [
+        -0.17520047910937495,
+        -0.08419394355729168
+      ],
+      "zero_excluded": true
+    },
+    "MSP": {
+      "mean": 0.016536633125000016,
+      "ci95": [
+        -0.005507829401041657,
+        0.03869414972916669
+      ],
+      "zero_excluded": false
+    },
+    "Energy": {
+      "mean": -0.04683219395833329,
+      "ci95": [
+        -0.07360738705729161,
+        -0.020230175645833345
+      ],
+      "zero_excluded": true
+    }
+  },
+  "interpretation": "Under the harmonized fixed-PE estimand, ViT-S Attention remains negative with CI excluding zero; MSP remains near zero with CI including zero; Energy weakly mirrors the negative sign with CI excluding zero. These are reviewer-reserve results and are not added to the main manuscript."
+}

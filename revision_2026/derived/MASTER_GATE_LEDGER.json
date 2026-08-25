@@ -1,0 +1,143 @@
+{
+  "package_version": "v0.3.2",
+  "created": "2026-08-24",
+  "gates": [
+    {
+      "gate_id": "E1_OUTPUT_VALIDATION",
+      "criterion": "48/48 expected model-direction records validate from saved scores; no sign flip",
+      "status": "PASS",
+      "evidence": {
+        "expected": 48,
+        "observed": 48,
+        "records_ok": 48
+      },
+      "source": "RESULTS/E1_NATIVE_OOD/DERIVED/E1_OUTPUT_VALIDATION.json"
+    },
+    {
+      "gate_id": "E2C_OUTPUT_VALIDATION",
+      "criterion": "24/24 controlled ViT-B PE\u00d7seed records validate",
+      "status": "PASS",
+      "evidence": {
+        "expected": 24,
+        "observed": 24,
+        "errors": []
+      },
+      "source": "RESULTS/E2C_VITB_CONTROLLED_2X2/DERIVED/E2C_2X2_OUTPUT_VALIDATION.json"
+    },
+    {
+      "gate_id": "E2C_PRELOCKED_DIRECTIONAL_HYPOTHESIS",
+      "criterion": "Original prelocked positive-asymmetry gate",
+      "status": "FAIL",
+      "scientific_outcome": "REVERSE_ASYMMETRY",
+      "pooled_delta": -0.252458375,
+      "pooled_ci95": [
+        -0.2804337252708333,
+        -0.22601137906770835
+      ],
+      "note": "The failed positive gate is not an execution failure; the data show a strong reverse asymmetry.",
+      "source": "RESULTS/E2C_VITB_CONTROLLED_2X2/DERIVED/E2C_2X2_HIERARCHICAL_L4_GATE.json"
+    },
+    {
+      "gate_id": "E3_OUTPUT_VALIDATION",
+      "criterion": "E1 48/48 and E2-C 24/24 output-space baseline records independently validate",
+      "status": "PASS",
+      "evidence": {
+        "E1_expected": 48,
+        "E1_observed": 48,
+        "E2C_expected": 24,
+        "E2C_observed": 24,
+        "warning_count": 9,
+        "errors": []
+      },
+      "source": "RESULTS/E3_OUTPUT_BASELINES/DERIVED/E3_OUTPUT_VALIDATION.json"
+    },
+    {
+      "gate_id": "E6_OUTPUT_VALIDATION",
+      "criterion": "24/24 ViT-S seed records and 288/288 layer records independently validate",
+      "status": "PASS",
+      "evidence": {
+        "seed_expected": 24,
+        "seed_observed": 24,
+        "layer_expected": 288,
+        "layer_observed": 288,
+        "errors": []
+      },
+      "source": "RESULTS/E6_VITS_CONTROLLED_2X2/DERIVED/E6_EVAL_VALIDATION.json"
+    },
+    {
+      "gate_id": "E6_ORIGINAL_PRELOCKED_RANDOM_PE_REPLICATION_GATE",
+      "criterion": "Original prelocked random-PE hierarchy: pooled CI upper<0; >=3/4 PE means negative; no PE CI entirely positive",
+      "status": "FAIL",
+      "components": {
+        "A_pooled_CI_upper_lt_0": false,
+        "B_at_least_3of4_PE_means_negative": true,
+        "C_no_PE_CI_entirely_positive": true,
+        "PASS": false,
+        "negative_PE_means": 3,
+        "PE_CIs_entirely_negative": 3
+      },
+      "note": "Remains FAIL. Preserved unchanged; not retroactively relabeled after estimand harmonization.",
+      "source": "RESULTS/E6_VITS_CONTROLLED_2X2/DERIVED/E6_VITS_REPLICATION_REPORT.json"
+    },
+    {
+      "gate_id": "E6_HARMONIZED_FIXED_PE_L4_ZERO_EXCLUSION",
+      "criterion": "Equal-weight mean across four prespecified PE families; seed bootstrap within family; 95% CI upper<0",
+      "status": "PASS",
+      "classification": "POST_AUDIT_ESTIMAND_HARMONIZATION_NOT_PRELOCKED_GATE",
+      "pooled_delta": -0.12722434916666667,
+      "pooled_ci95": [
+        -0.175268171140625,
+        -0.08432982929166667
+      ],
+      "source": "DERIVED/HARMONIZED_FIXED_PE_L4_ANALYSIS.json"
+    },
+    {
+      "gate_id": "CROSS_ARCHITECTURE_FIXED_PE_L4_DIFFERENCE",
+      "criterion": "Paired ViT-S minus ViT-B L4 Delta_asym fixed-PE 95% CI excludes zero",
+      "status": "PASS",
+      "classification": "POST_AUDIT_HARMONIZED_INFERENCE",
+      "difference": 0.12523402583333332,
+      "ci95": [
+        0.06632844994270831,
+        0.17913336125000004
+      ],
+      "source": "DERIVED/HARMONIZED_FIXED_PE_L4_ANALYSIS.json"
+    },
+    {
+      "gate_id": "L4_SCORE_ORIENTATION_CONSISTENCY",
+      "criterion": "Only layer among the 12 prespecified secondary layers with zero AUROC<0.5 inversions in both directions, all 24 PE\u00d7seed cells, in both ViT-B and ViT-S",
+      "status": "PASS",
+      "classification": "FUNCTIONAL_LAYER_JUSTIFICATION_POST_ANALYSIS_WITHIN_PRESPECIFIED_PROFILE",
+      "layer": 4,
+      "source": "DERIVED/LAYER_SCORE_ORIENTATION_AUDIT.csv"
+    },
+    {
+      "gate_id": "L2_SECONDARY_REVERSE_DIRECTION",
+      "criterion": "Secondary layer profile has negative pooled Delta and 24/24 negative seed cells in both architectures",
+      "status": "PASS",
+      "classification": "SECONDARY_PROFILE; SPECIFIC_SIGN_INVERSION_INTERPRETATION_POST_HOC",
+      "ViT_B": {
+        "mean": -0.5246385975,
+        "ci95": [
+          -0.5429484528958334,
+          -0.5077243795416666
+        ],
+        "bootstrap_resamples": 200000,
+        "rng_seed": 20260824,
+        "estimand": "equal-weight mean across four fixed prespecified PE families; seeds resampled within family"
+      },
+      "ViT_S": {
+        "mean": -0.46612482916666664,
+        "ci95": [
+          -0.48386366946875,
+          -0.4482399036197917
+        ],
+        "bootstrap_resamples": 200000,
+        "rng_seed": 20260824,
+        "estimand": "equal-weight mean across four fixed prespecified PE families; seeds resampled within family"
+      },
+      "source": "DERIVED/L2_SECONDARY_ANALYSIS.json"
+    }
+  ],
+  "post_audit_policy": "POLICIES/ESTIMAND_POLICY_v1.0.md"
+}
