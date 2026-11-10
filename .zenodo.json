@@ -1,16 +1,48 @@
 {
   "creators": [
-    {"name": "Bandjur, Djoko", "affiliation": "Faculty of Technical Sciences, University of Pristina, Kosovska Mitrovica", "type": "ProjectLeader"},
-    {"name": "Bandjur, Milos", "affiliation": "Faculty of Technical Sciences, University of Pristina, Kosovska Mitrovica", "type": "Researcher"},
-    {"name": "Micic, Aleksandar", "orcid": "0000-0001-8606-3528", "affiliation": "Faculty of Technical Sciences, University of Pristina, Kosovska Mitrovica", "type": "Researcher"},
-    {"name": "Jaksic, Branimir", "affiliation": "Faculty of Technical Sciences, University of Pristina, Kosovska Mitrovica", "type": "Researcher"}
+    {
+      "name": "Bandjur, Djoko",
+      "affiliation": "Faculty of Technical Sciences, University of Pristina, Kosovska Mitrovica",
+      "type": "ProjectLeader"
+    },
+    {
+      "name": "Bandjur, Milos",
+      "affiliation": "Faculty of Technical Sciences, University of Pristina, Kosovska Mitrovica",
+      "type": "Researcher"
+    },
+    {
+      "name": "Micic, Aleksandar",
+      "orcid": "0000-0001-8606-3528",
+      "affiliation": "Faculty of Technical Sciences, University of Pristina, Kosovska Mitrovica",
+      "type": "Researcher"
+    },
+    {
+      "name": "Jaksic, Branimir",
+      "affiliation": "Faculty of Technical Sciences, University of Pristina, Kosovska Mitrovica",
+      "type": "Researcher"
+    }
   ],
-  "title": "Resolution Sensitivity of Attention-Entropy OOD Detection in Vision Transformers: A Controlled Bidirectional Analysis — Science-Lock Major Revision Release",
-  "version": "2.0.1",
-  "description": "Science-lock software and replication release for Pattern Recognition manuscript PR-D-26-04876 R1. This patch preserves all primary estimates and prelocked gate statuses from v2.0.0, adds the complete eight-cell Layer-4 paired-direction correlation diagnostic, records the shared-seed nuisance interpretive boundary used in the final revision, and points to PR_MAJOR_REVISION_REPLICATION_v0.3.4. The original E6 random-PE prespecified replication gate remains failed; the harmonized fixed-PE result remains a narrower post-audit estimand and is not presented as a retroactive gate pass.",
+  "title": "Resolution Sensitivity of Attention-Entropy OOD Detection in Vision Transformers: A Controlled Bidirectional Analysis — R2 E1 Score-Level Reproducibility Addendum",
+  "version": "2.0.2",
+  "description": "R2 E1 score-level reproducibility addendum for Pattern Recognition manuscript PR-D-26-04876. This version retains the prior PR_MAJOR_REVISION_REPLICATION_v0.3.4 science-lock archive and adds 48 native E1 attention-entropy per-image NPZ scores, 48 JSON summaries, SHA-256 manifests, and score-level/statistical-audit scripts. Rank-based verification reproduces 576/576 archived E1 layer-level AUROC values to floating-point precision. No training, checkpoint inference, primary estimate, locked evaluation protocol, or prespecified criterion is changed. The original E6 random-PE prespecified replication gate remains FAIL; fixed-PE cross-scale inference remains exploratory.",
   "access_right": "open",
   "upload_type": "software",
   "language": "eng",
-  "keywords": ["Vision Transformers", "positional encoding", "out-of-distribution detection", "attention entropy", "ImageNet-100", "CIFAR-100", "RoPE", "ALiBi", "reproducibility"],
-  "related_identifiers": [{"identifier": "https://github.com/djokobandjur/vit-pe-scale-resolution-reliability", "relation": "isSupplementTo"}]
+  "keywords": [
+    "Vision Transformers",
+    "positional encoding",
+    "out-of-distribution detection",
+    "attention entropy",
+    "ImageNet-100",
+    "CIFAR-100",
+    "RoPE",
+    "ALiBi",
+    "reproducibility"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/djokobandjur/vit-pe-scale-resolution-reliability",
+      "relation": "isSupplementTo"
+    }
+  ]
 }
