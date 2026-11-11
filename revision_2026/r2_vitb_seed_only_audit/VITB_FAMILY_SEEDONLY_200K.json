@@ -1,0 +1,41 @@
+{
+  "method": "percentile bootstrap on six paired seed-level directional AUROC contrasts per PE; evaluation images fixed",
+  "rng": "numpy.random.default_rng (PCG64)",
+  "rng_seed": 20261111,
+  "draws": 200000,
+  "source": "24 included E2-C ViT-B seed-level directional contrasts (E2C_VITB_24_SEED_LEVEL_DELTAS.csv)",
+  "source_provenance": "Extracted from internal v0.3.2 working evidence; not independently cross-checked against the public v0.3.4 ZIP",
+  "status": "additional exploratory sensitivity; original Table 2 CIs not replaced",
+  "results": [
+    {
+      "pe": "learned",
+      "mean_delta": -0.2736480816666667,
+      "ci_lower": -0.3084385875,
+      "ci_upper": -0.24892685583333338
+    },
+    {
+      "pe": "sinusoidal",
+      "mean_delta": -0.2637089208333333,
+      "ci_lower": -0.2738515641666666,
+      "ci_upper": -0.2533670841666667
+    },
+    {
+      "pe": "rope",
+      "mean_delta": -0.271247005,
+      "ci_lower": -0.3324373566666666,
+      "ci_upper": -0.21504683
+    },
+    {
+      "pe": "alibi",
+      "mean_delta": -0.20122949249999997,
+      "ci_lower": -0.2833224808333333,
+      "ci_upper": -0.11913650416666664
+    },
+    {
+      "pe": "pooled_equal_weight",
+      "mean_delta": -0.25245837499999996,
+      "ci_lower": -0.2792038420364583,
+      "ci_upper": -0.22625500546874996
+    }
+  ]
+}
