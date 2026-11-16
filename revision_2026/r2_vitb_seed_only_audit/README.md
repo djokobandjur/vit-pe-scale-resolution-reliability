@@ -19,4 +19,4 @@ The analysis uses 24 archived E2-C ViT-B Layer-4 directional AUROC contrasts (fo
 
 All four intervals remain negative. This is a sensitivity analysis, not a new training experiment. The original seed-plus-image intervals in manuscript Table 2 remain unchanged; 200,000 resamples do not create additional independent training seeds.
 
-The same five materials are provided with the R2 submission in `PR_R2_VITB_SEED_ONLY_SENSITIVITY_2026-11-11.zip`.
+The same five materials are provided with the R2 submission in `PR_R2_VITB_SEED_ONLY_SENSITIVITY.zip`.
