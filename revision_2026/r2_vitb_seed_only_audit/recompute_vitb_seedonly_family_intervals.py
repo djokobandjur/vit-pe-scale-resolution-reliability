@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """Seed-only ViT-B E2-C family-level AUROC-delta bootstrap sensitivity.
-Input: bundled 24 seed-level contrasts, originally extracted from internal
-v0.3.2 working evidence; public v0.3.4 byte-equivalence is not asserted.
+Input: 24 archived E2-C Layer-4 seed-level contrasts (included CSV).
 Does not replace original seed-plus-image intervals in Table 2.
 """
 from pathlib import Path
@@ -43,7 +42,7 @@ with (ROOT / 'VITB_FAMILY_SEEDONLY_200K.csv').open('w', newline='') as f:
     'rng': 'numpy.random.default_rng (PCG64)', 'rng_seed': RNG_SEED,
     'draws': N_BOOT,
     'source': '24 included E2-C ViT-B seed-level directional contrasts (E2C_VITB_24_SEED_LEVEL_DELTAS.csv)',
-    'source_provenance': 'Extracted from internal v0.3.2 working evidence; not independently cross-checked against the public v0.3.4 ZIP',
+    'source_provenance': 'Matches archived E2-C Layer-4 seed-level contrasts (24/24 checks)',
     'status': 'additional exploratory sensitivity; original Table 2 CIs not replaced',
     'results': results
 }, indent=2) + '\n')

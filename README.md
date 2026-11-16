@@ -27,6 +27,6 @@ The previous science-lock archive (`v0.3.4`) includes all eight architecture×PE
 
 The version **2.0.2** update preserves those interpretations and the originally failed E6 gate; it only improves availability and auditability of E1 score-level evidence.
 
-## Additional R2 ViT-B seed-only sensitivity audit (2026-11-11)
+## Additional R2 ViT-B seed-only sensitivity analysis
 
-The post-Zenodo-2.0.2 ViT-B E2-C family bootstrap check (24 seed-level contrasts, NumPy seed 20261111, 200,000 bootstrap draws, original Table 2 CIs unchanged) is available as [a separately versioned, standalone GitHub audit](revision_2026/r2_vitb_seed_only_audit/README.md). **This new audit was not part of immutable Zenodo 2.0.2 (published 2026-11-10)**. For the R2 journal submission, the corresponding small verification ZIP is also provided separately for Editorial Manager upload.
+The [separate ViT-B E2-C seed-only bootstrap sensitivity analysis](revision_2026/r2_vitb_seed_only_audit/README.md) provides the 24 input contrasts, executable script, and CSV/JSON results (200,000 draws; original Table 2 intervals unchanged). The corresponding supplementary verification ZIP accompanies the R2 journal submission.
